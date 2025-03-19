@@ -1,12 +1,9 @@
-# Create T3 App
+# Vertical Profile Page
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
-## What's next? How do I make an app with this?
 
-
-
-If yo
+## Dependencies
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
@@ -14,7 +11,7 @@ If yo
 - [Drizzle](https://orm.drizzle.team)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
-
+- [shadrcn](https://ui.shadcn.com)
 
 
 ## How do I deploy this?

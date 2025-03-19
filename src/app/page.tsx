@@ -4,6 +4,16 @@ import { LatestPost } from "~/app/_components/post";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 import Image from 'next/image'
+import { Mail } from "lucide-react"
+ 
+import { Button } from "~/components/ui/button"
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "~/components/ui/accordion"
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -17,25 +27,90 @@ export default async function Home() {
     <HydrateClient>
       <main className="flex min-h-screen flex-col justify-top bg-gradient-to-b from-[#e1e1e1] to-[#c9c9cf] text-black">
         <div className="grid row-5 grid-flow-col  pt-5 ">
-            <div className=" flex  pl-5">
+            <div className=" flex  pl-20 t">
                 <Image
                   src="/header/computer.jpg"
-                  width={50}
-                  height={50}
+                  width={30}
+                  height={5}
                   alt="Picture of computer"
                 />
+                <div className=" pl-4"> Personanal Profile </div>
             </div>
-            <div className="flex flex-row justify-center"> About me </div>
-            <div className="flex flex-row justify-center"> Skills </div>
-            <div className="flex flex-row justify-center"> Projects</div>
-            <div className="flex flex-row justify-center"> Socials</div>
+            <div className="flex flex-row justify-center"> 
+              
+              <div className="flex "> About me</div>
+              <div className="flex pl-5 "> Skills</div>
+              <div className="flex pl-5 "> Projects</div>
+              <div className="flex pl-5 "> Socials</div>
+            </div>
+            
 
-            <div className="flex flex-row justify-end pr-10"> Resume </div>
+            <div className="flex flex-row justify-end pr-10"> 
+            <Button>
+              Resume <Mail /> 
+            </Button>
+           </div>
         </div>
 
-        <div className="flex text-large">
-          Hi i am
-        </div>
+       <div className="grid grid-flow-col pt-40 pr-5" >
+            <div className="flex flex-col pl-20 ">
+                <div className="text-5xl">
+                  <span className="block">Hi I'am   <strong>Muneeb Haq</strong></span>
+                  <span className="block">a <strong className="font-bold">Full Stack </strong>  
+                              <span style={{
+                          fontWeight: 800, // Extra bold
+                          color: 'white',  // Text color
+                          textShadow: '-1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black, 1px 1px 0px black'
+                      }}>
+                          Developer
+                      </span>
+                  </span>
+                  <span className="block">based in the <strong className="uppercase">UNITED STATES</strong></span>
+              </div>
+              <div className="flex flex-col w-[500] ">
+
+
+                  <p className="text-lg mt-4">
+                      A passionate <strong className="font-bold">Full Stack Developer</strong> with extensive experience in Kubernetes, 
+                      Apache Flink, and cloud architectures. 
+                  </p>
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger> ...</AccordionTrigger>
+                      <AccordionContent>
+                            <p className="text-lg mt-4">I began my programming journey in game development, diving into 
+                            frontend and middleware programming before transitioning to full-stack development.I’m capable of building 
+                            scalable applications, designing complex architectures using AWS/Terraform, and orchestrating them with ease.
+                        </p>
+                        <p className="text-lg mt-4">
+                            In addition to my professional work, I am deeply passionate about game development on the side and 
+                            constantly explore new technologies through side projects. I believe in the power of learning, 
+                            and am always keen to improve my skills to build robust, reliable, and innovative solutions.
+                        </p>
+
+                        <p className="text-lg mt-4">
+                            My expertise extends across designing full-stack systems, and I have the capability to architect complex 
+                            solutions, integrating cutting-edge technologies and tools to create seamless user experiences and efficient 
+                            back-end operations.
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                  
+
+                 
+
+              </div>
+              
+
+            </div>
+
+            <div className="">
+              tdsfdsfs
+            </div>
+
+       </div>
+
       </main>
     </HydrateClient>
   );
