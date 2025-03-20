@@ -106,7 +106,12 @@ export default async function Home() {
             </div>
 
             <div className="">
-              tdsfdsfs
+                <Image
+                  src="/profile_pic/profile.jpg"
+                  width={300}
+                  height={200}
+                  alt="Picture of me"
+                />
             </div>
 
        </div>
