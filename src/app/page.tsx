@@ -5,7 +5,11 @@ import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 import Image from 'next/image'
 import { Mail } from "lucide-react"
- 
+import { Twitter } from "lucide-react"
+import { LinkedinIcon } from "lucide-react"
+import { GithubIcon } from "lucide-react"
+import { InstagramIcon } from "lucide-react"
+import { HomeIcon } from "lucide-react"
 import { Button } from "~/components/ui/button"
 
 import {
@@ -14,6 +18,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion"
+
+export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
+  return (
+    <div className={`${height} ${color} ${width}`} />
+  );
+}
+
+export  function HorizontalLine({ width = "w-full", color = "bg-black", height = "h-px" }) {
+  return (
+    <div className={`${width} ${color} ${height}`} />
+  );
+}
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -27,7 +43,7 @@ export default async function Home() {
     <HydrateClient>
       <main className="flex min-h-screen flex-col justify-top bg-gradient-to-b from-[#e1e1e1] to-[#c9c9cf] text-black">
         <div className="grid row-5 grid-flow-col  pt-5 ">
-            <div className=" flex  pl-20 t">
+            <div className=" flex  pl-20 ">
                 <Image
                   src="/header/computer.jpg"
                   width={30}
@@ -115,6 +131,39 @@ export default async function Home() {
             </div>
 
        </div>
+       <div  className=" flex flex-row pl-20  pt-2">
+
+          <Button variant="outline" size="icon">
+              <Twitter />
+          </Button>
+
+          <Button variant="outline" size="icon" className=" ml-5">
+              <LinkedinIcon />
+          </Button>
+
+          <Button variant="outline" size="icon" className=" ml-5">
+              <GithubIcon />
+          </Button>
+
+          <Button variant="outline" size="icon" className=" ml-5">
+              <InstagramIcon />
+          </Button>
+
+          <Button variant="outline" size="icon" className=" ml-5">
+              <Mail />
+          </Button>
+
+          <Button variant="outline" size="icon" className=" ml-5">
+              <HomeIcon />
+          </Button>
+
+          <div className="pt-5 ml-5 w-1/2">
+            <HorizontalLine width="w-full" color="bg-black" height="h-1"/>
+            <div> </div>
+          </div>
+
+       </div >
+
 
       </main>
     </HydrateClient>
