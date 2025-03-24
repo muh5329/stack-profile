@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion"
+import { MultiCarousel } from "~/components/multi-carousel";
 
 export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
   return (
@@ -42,6 +43,8 @@ export default async function Home() {
   return (
     <HydrateClient>
       <main className="flex min-h-screen flex-col justify-top bg-gradient-to-b from-[#e1e1e1] to-[#c9c9cf] text-black">
+
+        {/* Header */}
         <div className="grid row-5 grid-flow-col  pt-5 ">
             <div className=" flex  pl-20 ">
                 <Image
@@ -68,6 +71,7 @@ export default async function Home() {
            </div>
         </div>
 
+        {/* About Me */}
        <div className="grid grid-flow-col pt-40 pr-5" >
             <div className="flex flex-col pl-20 ">
                 <div className="text-5xl">
@@ -131,6 +135,8 @@ export default async function Home() {
             </div>
 
        </div>
+
+       {/* Socials */}
        <div  className=" flex flex-row pl-20  pt-2">
 
           <Button variant="outline" size="icon">
@@ -159,10 +165,21 @@ export default async function Home() {
 
           <div className="pt-5 ml-5 w-1/2">
             <HorizontalLine width="w-full" color="bg-black" height="h-1"/>
-            <div> </div>
+            <div>
+               {/* Spacing */}
+               </div>
           </div>
 
        </div >
+
+       {/* Skills  */}
+       <div className=" flex flex-col pl-20 justify-center  content-center pt-20">
+          <p className="text-4xl mt-4 mb-10 text-center">
+            My <strong className="font-bold">Skills</strong>
+          </p>
+          <MultiCarousel />
+
+       </div>
 
 
       </main>
