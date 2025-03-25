@@ -45,7 +45,7 @@ export default async function Home() {
       <main className="flex min-h-screen flex-col justify-top bg-gradient-to-b from-[#e1e1e1] to-[#c9c9cf] text-black">
 
         {/* Header */}
-        <div className="grid row-5 grid-flow-col  pt-5 ">
+        <div className="grid row-5 grid-flow-col  pt-10 ">
             <div className=" flex  pl-20 ">
                 <Image
                   src="/header/computer.jpg"
@@ -72,7 +72,7 @@ export default async function Home() {
         </div>
 
         {/* About Me */}
-       <div className="grid grid-flow-col pt-40 pr-5" >
+       <div className="grid grid-flow-col pt-20 pr-5" >
             <div className="flex flex-col pl-20 ">
                 <div className="text-5xl">
                   <span className="block">Hi I'am   <strong>Muneeb Haq</strong></span>
