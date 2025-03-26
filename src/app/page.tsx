@@ -42,7 +42,7 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col justify-top bg-gradient-to-b from-[#e1e1e1] to-[#c9c9cf] text-black">
+      <main className="flex min-h-screen flex-col justify-top bg-gradient-to-b  text-black">
 
         {/* Header */}
         <div className="grid row-5 grid-flow-col  pt-10 ">
@@ -173,11 +173,47 @@ export default async function Home() {
        </div >
 
        {/* Skills  */}
-       <div className=" flex flex-col pl-20 justify-center  content-center pt-20">
-          <p className="text-4xl mt-4 mb-10 text-center">
+       <div className=" flex flex-col pl-20 justify-center  content-center pt-10">
+          <p className="text-4xl mt-4 mb-2 text-center">
             My <strong className="font-bold">Skills</strong>
           </p>
           <MultiCarousel />
+
+       </div>
+
+
+       {/* My Experience  */}
+       <div className=" flex flex-col pl-20 justify-center bg-black content-center pt-20">
+          <p className="text-4xl  text-white mt-4 mb-10 text-center">
+              My <strong className="font-bold">Experience</strong>
+          </p>
+
+          <div className="flex  border border-x-stone-400 rounded-lg  m-10" >
+                {/* Company icon */}
+                <div className="pl-5 pt-5 flex flex-row w-full">  
+                  <Image
+                    src="/header/computer.jpg"
+                    width={20}
+                    height={20}
+                    alt="Picture of computer"
+                  />
+
+                  <p className="text-md pl-10 text-white mt-4 mb-5 text-center">
+                       <strong className="font-bold">Engineer III at Comcast</strong>
+                  </p>
+
+                  <div className=" flex justify-end">
+                      <p className="text-md pl-10 text-white mt-4 mb-5 text-center">
+                          <strong className="font-bold">Engineer III at Comcast</strong>
+                      </p>
+
+                  </div>
+
+                </div>
+                
+
+
+          </div>
 
        </div>
 

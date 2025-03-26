@@ -167,7 +167,7 @@ const model = [
 
 export function MultiCarousel() {
   return (
-    <Carousel className="w-full  sm:max-w-2xl  md:max-w-5xl lg:max-w-7xl">
+    <Carousel className="w-full  sm:max-w-2xl  md:max-w-5xl lg:max-w-6xl">
       <CarouselContent className="-ml-1">
       {model.map((item, index) => {
         // Skip every other item, increment by 2
@@ -189,7 +189,7 @@ export function MultiCarousel() {
                         alt="Picture of computer"
                         />
                         <div className="pt-5">
-                        <span className="text-xl font-semibold">{item.text}</span>
+                        <span className="text-md font-semibold">{item.text}</span>
                         </div>
                     </div>
                     </CardContent>
@@ -207,7 +207,7 @@ export function MultiCarousel() {
                             alt="Picture of computer"
                         />
                         <div className="pt-5">
-                            <span className="text-xl font-semibold">{nextItem.text}</span>
+                            <span className="text-md font-semibold">{nextItem.text}</span>
                         </div>
                         </div>
                     </CardContent>
