@@ -183,39 +183,117 @@ export default async function Home() {
 
 
        {/* My Experience  */}
+
+       
        <div className=" flex flex-col pl-20 justify-center bg-black content-center pt-20">
           <p className="text-4xl  text-white mt-4 mb-10 text-center">
               My <strong className="font-bold">Experience</strong>
           </p>
+          {/* Comcast III */}
+          <div className="border border-x-stone-400 rounded-lg  m-10 ">
+              <div className="grid grid-flow-col row-6  " >
+                    {/* Company icon */}
+                    <div className="pl-3 pt-5 flex flex-row col-span-1  ">  
+                      <div className="mt-5  ml-4">
+                          <Image
+                          src="/companies/comcast_logo.jpg"
+                          width={20}
+                          height={20}
+                          alt="Picture of computer"
+                        />
+                      </div>
 
-          <div className="flex  border border-x-stone-400 rounded-lg  m-10" >
-                {/* Company icon */}
-                <div className="pl-5 pt-5 flex flex-row w-full">  
-                  <Image
-                    src="/header/computer.jpg"
-                    width={20}
-                    height={20}
-                    alt="Picture of computer"
-                  />
+                      <div className="flex items-center  w-[34%] ">
+                        <p className="text-lg pl-5 text-white mt-4 mb-5 text-center ">
+                            <strong className="font-bold">Engineer II-III at Comcast</strong>
+                        </p>
+                      </div>
 
-                  <p className="text-md pl-10 text-white mt-4 mb-5 text-center">
-                       <strong className="font-bold">Engineer III at Comcast</strong>
+                    
+                      
+
+                      <div className="flex flex-row justify-end col-span-2 w-[60%] ">
+                        <p className="text-xs pl-10 text-stone-400 mt-4 mb-5 text-right">
+                          <strong className="font-bold">Aug 2021 - Now</strong>
+                        </p>
+                      </div>
+
+                    </div>
+                  
+              </div>
+
+              <div className="">
+                <p className="text-xs pl-10 text-stone-400 mt-4 mb-5 p-4">  
+                    At Comcast, I worked as a Backend Engineer III and previously as an Engineer II, focusing on big data, stream processing, and data analytics.  
+                    <br /><br />  
+                    As a Backend Engineer III (Aug 2021 - Mar 2024), I played a key role in the Data Integration Engine, leveraging Apache Flink to analyze millions of real-time records and detect internet outages. This system enabled proactive and reactive solutions, ensuring customers received assistance before needing to reach out. Additionally, I developed the Menshen API using Spring Boot, which provided a recommendation layer and customer state records to downstream consumers. By integrating Redis, I collected real-time metrics such as packet loss and latency, offering a snapshot of a user's network state.  
+                    <br /><br />  
+                    Previously, as an Engineer II, I worked on Timeline, an Angular-based application that visualized customers' internet support history in an interactive UI, aiding in diagnostics. I also contributed to Elements UI, a React application designed for non-technical partners to ingest diverse data into our timeline system. Furthermore, I developed machine learning models in Databricks (Python) to generate customer solution recommendations. These models were processed by Apache Flink and delivered to end users, enhancing the support experience.  
+                    <br /><br />  
+                    Throughout my tenure, I worked on cutting-edge data processing, API development, and machine learning solutions to improve Comcast's customer experience and operational efficiency.  
                   </p>
-
-                  <div className=" flex justify-end">
-                      <p className="text-md pl-10 text-white mt-4 mb-5 text-center">
-                          <strong className="font-bold">Engineer III at Comcast</strong>
-                      </p>
-
-                  </div>
-
-                </div>
                 
-
+              </div>
 
           </div>
 
+          {/* IBC  */}
+          <div className="border border-x-stone-400 rounded-lg  bg-zinc-700 m-10 ">
+              <div className="grid grid-flow-col row-6  " >
+                    {/* Company icon */}
+                    <div className="pl-3 pt-5 flex flex-row col-span-1  ">  
+                      <div className="mt-5  ml-4">
+                          <Image
+                          src="/companies/independence_blue_cross_logo.jpg"
+                          width={20}
+                          height={20}
+                          alt="Picture of computer"
+                        />
+                      </div>
+
+                      <div className="flex items-center  w-[34%] ">
+                        <p className="text-lg pl-5 text-white mt-4 mb-5 text-center ">
+                            <strong className="font-bold"> Engineer I -II Independence Blue Cross </strong>
+                        </p>
+                      </div>
+
+                    
+                      
+
+                      <div className="flex flex-row justify-end col-span-2 w-[60%] ">
+                        <p className="text-xs pl-10 text-stone-400 mt-4 mb-5 text-right">
+                          <strong className="font-bold">Sep 2015 – Aug 2021</strong>
+                        </p>
+                      </div>
+
+                    </div>
+                  
+              </div>
+
+              <div className="">
+                <p className="text-xs pl-10 text-stone-400 mt-4 mb-5 p-4">
+                  During my six years at Independence Blue Cross (Sep 2015 – Aug 2021), I worked as a Mobile App & Web Developer, progressing from Developer I to II. As part of an agile team, I developed native mobile and desktop web applications that served thousands of health insurance customers. One of my key contributions was building the Provider Finder Tool, which allowed consumers to search for hospitals and doctors and save their preferred providers for future reference. I also played a crucial role in developing the Softphone application using Angular and Spring Boot, which was used by hundreds of call center representatives to assist customers with their health insurance needs. Additionally, I created various middleware Java services to interact with databases and external RESTful services, making it easier for developers to access member data and meet business requirements. Another major project I worked on was developing SPA applications, such as Softphone and PCP, which helped onboard millions of users in selecting their Primary Care Physician while enhancing tools for customer support agents. Throughout my time at Independence Blue Cross, I focused on building efficient, user-friendly applications that improved both customer experience and internal support operations.
+                  <br /><br />
+                  At Independence Blue Cross (Sep 2015 – Aug 2021), I worked as a Mobile App & Web Developer, progressing from Developer I to II. I contributed to agile teams, developing native mobile and desktop web applications for thousands of health insurance customers. My key projects included:
+                  <br /><br />
+                  <strong>Provider Finder Tool</strong> – Enabled consumers to search for hospitals and doctors, allowing them to save preferred providers.
+                  <br />
+                  <strong>Softphone Application</strong> – Built using Angular and Spring Boot, this app supported hundreds of call center representatives in assisting customers.
+                  <br />
+                  <strong>Middleware Services</strong> – Developed Java-based middleware to interact with databases and external RESTful services, facilitating streamlined member data access for business needs.
+                  <br />
+                  <strong>SPA Applications (Softphone & PCP)</strong> – Helped onboard millions of users in selecting their Primary Care Physician while enhancing customer support tools.
+                  <br /><br />
+                  My work played a crucial role in improving the digital experience for both customers and internal support teams.
+                </p>
+              </div>
+
+
+          </div>
+          
        </div>
+
+       
 
 
       </main>
