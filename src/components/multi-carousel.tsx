@@ -21,11 +21,11 @@ const model = [
     },
     {
         icon: "/skills/icons8-apache-kafka-gradient/icons8-apache-kafka-96.png",
-        text: "Apache Kafka"
+        text: "Kafka"
     },
     {
         icon: "/skills/icons8-nut-ios-17-outlined/icons8-nut-100.png",
-        text: "Nut (iOS 17)"
+        text: "Flink"
     },
     {
         icon: "/skills/icons8-aws-material-outlined/icons8-aws-48.png",
@@ -45,7 +45,7 @@ const model = [
     },
     {
         icon: "/skills/icons8-c-programming-color/icons8-c-programming-96.png",
-        text: "C Programming"
+        text: "C "
     },
     {
         icon: "/skills/icons8-py-ios-17-filled/icons8-py-50.png",
@@ -65,11 +65,11 @@ const model = [
     },
     {
         icon: "/skills/icons8-raspberry-pi-ios-17-outlined/icons8-raspberry-pi-50.png",
-        text: "Raspberry Pi"
+        text: "Rs-Pi"
     },
     {
         icon: "/skills/icons8-database-export-ios-17-outlined/icons8-database-export-50.png",
-        text: "Database Export"
+        text: "Database "
     },
     {
         icon: "/skills/icons8-react-bold/icons8-react-48.png",
@@ -157,7 +157,7 @@ const model = [
     },
     {
         icon: "/skills/icons8-visual-studio-code-2019-color/icons8-visual-studio-code-2019-48.png",
-        text: "Visual Studio Code"
+        text: "VSCode"
     }
 ];
 
@@ -167,8 +167,8 @@ const model = [
 
 export function MultiCarousel() {
   return (
-    <Carousel className="w-full  sm:max-w-2xl  md:max-w-5xl lg:max-w-6xl">
-      <CarouselContent className="-ml-1">
+    <Carousel className="w-full  ">
+      <CarouselContent className="-ml-1 max-w-6xl">
       {model.map((item, index) => {
         // Skip every other item, increment by 2
         if (index % 2 === 0) {
@@ -220,8 +220,7 @@ export function MultiCarousel() {
         return null; // Skip the current item if it's not being rendered
         })}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      
     </Carousel>
   )
 }
