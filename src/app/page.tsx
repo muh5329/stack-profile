@@ -293,6 +293,32 @@ export default async function Home() {
           
        </div>
 
+       {/* About Me */}
+       <div className=" flex flex-col pl-20 justify-center bg-white content-center pt-20">
+          <p className="text-4xl  text-black mt-4 mb-10 text-center">
+              About <strong className="font-bold">Me</strong>
+          </p>
+
+          <div className="flex">
+
+            <div className=" border border-x-stone-400 rounded-lg  m-10 w-[30%]">
+              <Image
+                  src="/profile_pic/akira_profile.jpg"
+                  width={500}
+                  height={400}
+                  alt="Picture of me"
+                />           
+            </div>
+            <div className=" border border-x-stone-400 rounded-lg  w-[50%]">
+                        
+            </div>
+          </div>
+         
+
+
+
+       </div>
+
        
 
 

@@ -8,7 +8,7 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 - [X](Quick Blurb)
 - [X](Socials)
 - [X](Skills)
-- [](My Experience)
+- [X](My Experience)
 - [](About me)
 - [](My Projects)
 - [](Testimonials)
