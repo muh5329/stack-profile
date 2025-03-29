@@ -21,6 +21,7 @@ import {
 } from "~/components/ui/accordion"
 import { MultiCarousel } from "~/components/multi-carousel";
 import { ProjectsCarousel } from "~/components/projects-carousel";
+import { Card, CardContent } from "~/components/ui/card";
 
 export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
   return (
@@ -365,11 +366,24 @@ export default async function Home() {
 
             <ProjectsCarousel/>
           </div>
-          
 
-       </div>
+        </div>
 
-       
+       {/* My Testimonials  */}
+       <div className=" flex flex-col pl-20 justify-center bg-white content-center pt-10">
+          <p className="text-4xl  text-black mt-4 mb-10 text-center">
+              My <strong className="font-bold">Testimonials</strong>
+          </p>
+
+          <div className="flex w-full justify-center content-center">
+            <Card className=" bg-black border-black">
+                <CardContent className="grid grid-flow-col ">
+                  
+                </CardContent>           
+            </Card>
+          </div>
+
+        </div>
 
 
       </main>
