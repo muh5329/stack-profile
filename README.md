@@ -4,15 +4,15 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 ## Features 
 
-- [](Header)
+- [X] (Header)
 - [X](Quick Blurb)
-- [X](Socials)
-- [X](Skills)
+- [X] (Socials)
+- [X] (Skills)
 - [X](My Experience)
-- [](About me)
-- [](My Projects)
-- [](Testimonials)
-- [](Contact Me)
+- [X](My Projects)
+- [X] (Testimonials)
+- [X](Contact Me)
+- [X] (Footer)
 
 
 ## Dependencies

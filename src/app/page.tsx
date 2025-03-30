@@ -22,6 +22,9 @@ import {
 import { MultiCarousel } from "~/components/multi-carousel";
 import { ProjectsCarousel } from "~/components/projects-carousel";
 import { Card, CardContent } from "~/components/ui/card";
+import { ProfileForm } from "~/components/contact-form";
+import { Textarea } from "~/components/ui/textarea";
+import { TextareaForm } from "~/components/text-area-form";
 
 export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
   return (
@@ -51,7 +54,7 @@ export default async function Home() {
         <div className="grid row-5 grid-flow-col  pt-10 ">
             <div className=" flex  pl-20 ">
                 <Image
-                  src="/header/computer.jpg"
+                  src="/profile_pic/top.jpg"
                   width={30}
                   height={5}
                   alt="Picture of computer"
@@ -129,7 +132,7 @@ export default async function Home() {
 
             <div className="">
                 <Image
-                  src="/profile_pic/profile.jpg"
+                  src="/profile_pic/ghibli_profile.png"
                   width={300}
                   height={200}
                   alt="Picture of me"
@@ -256,11 +259,11 @@ export default async function Home() {
                     <div className="pl-3 pt-5 flex flex-row col-span-1  ">  
                       <div className="mt-5  ml-4">
                           <Image
-                          src="/companies/independence_blue_cross_logo.jpg"
-                          width={20}
-                          height={20}
-                          alt="Picture of computer"
-                        />
+                            src="/companies/independence_blue_cross_logo.jpg"
+                            width={20}
+                            height={20}
+                            alt="Picture of computer"
+                          />
                       </div>
 
                       <div className="flex items-center  w-[34%] ">
@@ -332,12 +335,12 @@ export default async function Home() {
                   alt="Picture of me"
                 />           
             </div>
-          <div className=" text-xs  text-stone-700 w-[50%]">
+          <div className=" text-md  text-stone-700 w-[50%]">
               <p>
                 Hey there! My name is Muneeb Haq, and I have been programming professionally since August of 2015. I got my start in the world of computer science at a very young age. It began with me tinkering around with Warcraft III custom maps, which eventually turned into an effort to learn how to make my own video games. This led me to computer science, and it has been a deeply gratifying journey ever since.
               </p>
               <br />
-              <p className="text-xs  text-stone-700">
+              <p className="text-md  text-stone-700">
                 While my origins were rooted in a desire to get into game development, my true passion for creation and learning has allowed me to experience many different facets of this field. I started my career as a UI developer making healthcare websites used by millions. Over time, I transitioned into a variety of different roles, ranging from middleware service development and DevOps infrastructure to big data real-time analytics and processing.
               </p>
               <Accordion   type="single" collapsible>
@@ -345,7 +348,7 @@ export default async function Home() {
                       <AccordionTrigger  className=" "> ...</AccordionTrigger>
                       <AccordionContent>
                           
-                          <p className="text-xs  text-stone-700">
+                          <p className="text-md  text-stone-700">
                             I still hold that original flame deep in my heart for game development and 3D graphics programming, albeit not in a professional capacity. Many of my side projects and passions revolve around creating games and 3D experiences in WebGL, for example. However, I try not to limit myself to just 3D applications and always seek to explore new languages and paradigms.
                           </p>  
                       </AccordionContent>
@@ -370,22 +373,228 @@ export default async function Home() {
         </div>
 
        {/* My Testimonials  */}
-       <div className=" flex flex-col pl-20 justify-center bg-white content-center pt-10">
-          <p className="text-4xl  text-black mt-4 mb-10 text-center">
-              My <strong className="font-bold">Testimonials</strong>
-          </p>
+       <div className="pl-20 justify-center bg-white content-center pt-10 mb-20">
+            <p className="text-4xl  text-black mt-4 mb-20 text-center">
+                My <strong className="font-bold">Testimonials</strong>
+            </p>
 
-          <div className="flex w-full justify-center content-center">
-            <Card className=" bg-black border-black">
-                <CardContent className="grid grid-flow-col ">
-                  
-                </CardContent>           
-            </Card>
+        <div className=" grid grid-flow-col justify-center items-center  gap-10">
+
+
+        <div className="flex w-full justify-center content-center drop-shadow-lg">
+              <Card className=" bg-white border-white ">
+                  <CardContent className="grid grid-flow-col  ">
+                        <div className="p-10 max-w-80 content-center justify-center">
+                            <Image
+                              src="/testimonials/TestimonialsC.png"
+                              width={120}
+                              height={120}
+                              alt="Picture of computer"
+                              className="mx-auto"
+                            />
+                            <div className="">
+                                <p className="text-md  text-gray-600 pt-7 text-center">
+                                  A reliable engineer who can always be counted on in toughest of times and in deepest of crunches.
+                                </p> 
+
+                            </div>
+                            <div className="pt-6 flex justify-center">
+                                  <HorizontalLine width="w-1/2" color="bg-white" height="h-0.5" />
+                            </div>
+
+                            <div className="">
+                                <p className="text-2xl  text-gray-600 pt-7 text-center">
+                                  <strong> Maria Mapples</strong>
+                                </p> 
+
+                                <div className="">
+
+                                <p className="text-xl  text-slate-600 pt-7 text-center">
+                                  <strong> Engineer</strong>
+                                  </p> 
+                                </div>
+                            </div> 
+                        </div>
+                  </CardContent>           
+              </Card>
+          </div>
+           
+          <div className="flex w-full justify-center content-center drop-shadow-lg">
+              <Card className=" bg-black border-black ">
+                  <CardContent className="grid grid-flow-col  ">
+                        <div className="p-10 max-w-80 content-center justify-center">
+                            <Image
+                              src="/testimonials/TestimonialsA.png"
+                              width={120}
+                              height={120}
+                              alt="Picture of computer"
+                              className="mx-auto"
+                            />
+                            <div className="">
+                                <p className="text-md  text-white pt-7 text-center">
+                                  A reliable engineer who can always be counted on in toughest of times and in deepest of crunches.
+                                </p> 
+
+                            </div>
+                            <div className="pt-6 flex justify-center">
+                                  <HorizontalLine width="w-1/2" color="bg-white" height="h-0.5" />
+                            </div>
+
+                            <div className="">
+                                <p className="text-2xl  text-white pt-7 text-center">
+                                  <strong> Jacob Jacobson</strong>
+                                </p> 
+
+                                <div className="">
+
+                                <p className="text-xl  text-white pt-7 text-center">
+                                  <strong> Director</strong>
+                                  </p> 
+                                </div>
+                            </div> 
+                        </div>
+                  </CardContent>           
+              </Card>
           </div>
 
+          <div className="flex w-full justify-center content-center drop-shadow-lg">
+              <Card className=" bg-white border-white ">
+                  <CardContent className="grid grid-flow-col  ">
+                        <div className="p-10 max-w-80 content-center justify-center">
+                            <Image
+                              src="/testimonials/TestimonialsB.png"
+                              width={120}
+                              height={120}
+                              alt="Picture of computer"
+                              className="mx-auto"
+                            />
+                            <div className="">
+                                <p className="text-md  text-gray-600 pt-7 text-center">
+                                  A reliable engineer who can always be counted on in toughest of times and in deepest of crunches.
+                                </p> 
+
+                            </div>
+                            <div className="pt-6 flex justify-center">
+                                  <HorizontalLine width="w-1/2" color="bg-white" height="h-0.5" />
+                            </div>
+
+                            <div className="">
+                                <p className="text-2xl  text-gray-600 pt-7 text-center">
+                                  <strong> Debby Downer</strong>
+                                </p> 
+
+                                <div className="">
+
+                                <p className="text-xl  text-slate-600 pt-7 text-center">
+                                  <strong> UX Designer</strong>
+                                  </p> 
+                                </div>
+                            </div> 
+                        </div>
+                  </CardContent>           
+              </Card>
+          </div>
+           
         </div>
 
+       </div>
 
+        {/* Contact Me  */}
+        <div className="pl-20 flex justify-center content-center  bg-white  pt-10 mb-20">
+              <div className=" grid grid-flow-col gap-20 w-full ">
+                  <div className="max-w-96">
+                    <div className=""><ProfileForm/></div>
+                    <div className="pt-5"><ProfileForm/></div>
+                    <div className="pt-5"><ProfileForm/></div>
+                    <div className="pt-5">  <TextareaForm/> </div>
+
+                    <div className=" flex flex-row pt-5 ">
+                      <Button>
+                        Get In Touch
+                      </Button> 
+
+                      <Button className=" border-black ml-5" variant="outline" size="icon">
+                          <Twitter />
+                      </Button>
+
+                      <Button variant="outline" size="icon" className=" border-black ml-5">
+                          <LinkedinIcon />
+                      </Button>
+
+                      <Button variant="outline" size="icon" className="border-black ml-5">
+                          <GithubIcon />
+                      </Button>
+
+                    
+                      <Button variant="outline" size="icon" className="border-black ml-5">
+                          <Mail />
+                      </Button>
+
+                      <Button variant="outline" size="icon" className="border-black ml-5">
+                          <HomeIcon />
+                      </Button>
+
+                    </div>
+                  </div>
+
+                  <div className="max-w-7xl">
+                      <div className="text-4xl">
+                          <span className="block"><strong>Let's </strong><span style={{
+                                  fontWeight: 800, // Extra bold
+                                  color: 'white',  // Text color
+                                  textShadow: '-1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black, 1px 1px 0px black'
+                              }}>
+                                  talk
+                              </span> </span>
+                          <span className="block"> <strong className="uppercase">Get in Touch!</strong></span>
+                      </div>
+                          
+                      <p className="text-sm  text-gray-500 pt-7 ">
+                            I seek to push the limits of creativity and hope to do it in a fun and highly professional way. You wont regret this working opportunity!
+                      </p> 
+
+                      <div className="" >
+                        <p className="text-sm  text-slate-500 pt-7 ">
+                            <strong className="uppercase">muh5329@gmail.com</strong>
+                            <span className="block">
+                                <strong className="uppercase">1-800-safe-auto</strong> 
+                            </span>
+                        </p> 
+                      </div>
+
+                      
+                  </div>
+
+                  
+
+              </div>
+    
+        </div>
+       
+       
+        {/* Footer */}
+        <div className="flex flex-row items-center justify-between bg-black pb-10 pt-10 px-20">
+          {/* Left Section */}
+          <div className="flex items-center">
+            <Image
+              src="/profile_pic/top.jpg"
+              width={30}
+              height={5}
+              alt="Picture of computer"
+            />
+            <div className="pl-4 font-bold text-white pt-1">Muneeb's Profile</div>
+          </div>
+
+          {/* Right Section */}
+          <div className="flex flex-col">
+              <p className="text-xs  text-white">
+                @2025-2025 Muneeb's Profile
+              </p>
+              <p className="text-xs  text-white">
+                Made in React
+              </p>               
+          </div>
+        </div>
       </main>
     </HydrateClient>
   );
