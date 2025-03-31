@@ -3,10 +3,10 @@ import Link from 'next/link';
 const CustomHeader = () => {
   return (
     <nav className="flex space-x-5  bg-white text-black">
-      <Link href="#about" className="pl-5 cursor-pointer select-none">About Me</Link>
-      <Link href="#skills" className="pl-5 cursor-pointer select-none">Skills</Link>
-      <Link href="#projects" className="pl-5 cursor-pointer select-none">Projects</Link>
-      <Link href="#contact" className="pl-5 cursor-pointer select-none">Socials</Link>
+      <Link href="#about" className="pl-5 cursor-pointer select-none text-lg font-semibold hover:underline">About Me</Link>
+      <Link href="#skills" className="pl-5 cursor-pointer select-none text-lg font-semibold hover:underline">Skills</Link>
+      <Link href="#projects" className="pl-5 cursor-pointer select-none text-lg font-semibold hover:underline">Projects</Link>
+      <Link href="#contact" className="pl-5 cursor-pointer select-none text-lg font-semibold hover:underline">Socials</Link>
     </nav>
   );
 };

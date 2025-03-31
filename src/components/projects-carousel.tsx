@@ -11,6 +11,37 @@ import {
 import Image from 'next/image'
 import { Button } from "./ui/button"
 import {SquareArrowOutUpRight} from "lucide-react"
+import { Description } from "@radix-ui/react-toast"
+
+const model = [
+  {
+    image: "/projects/dcp.jpg",
+    title: "DigitalPaperControlPlane",
+    description:"Sony Digital Paper control plane . Turns a Sony Digital Paper device into a passive art display/ information display device.",
+    link: "https://github.com/muh5329/DigitalPaperControlPlane"
+  },{
+    image: "/projects/fuzzy_plan.jpg",
+    title: "FuzzyPlanets",
+    description:"The Website/Engine will include a centered Text Prompt, with a default planet at the center. At the left hand side will be displayed the currently typed out chosen characteristics that can be selected and deleted. The center of the screen is the chosen planet. The text prompts will transform and modify the planet  such as \"rocky\" as the user adds to the prompts. ",
+    link: "https://github.com/muh5329/FuzzyPlanets"
+  },{
+    image: "/projects/m_factory.jpg",
+    title: "Monkey Factory",
+    description:"A portfolio website that acts as a resume and a showcase of all the fun projects that i have been working on.",
+    link: "https://github.com/muh5329/Monkey-Factory"
+  },{
+    image: "/projects/wave_fnc.jpg",
+    title: "Wave Collapse Algorithm Editor",
+    description:"An attempt at a Wave Collapse Function + editor for manual edge to edge connection mapping.\nWhat is a Wave Collapse Function ?\nInspired by mxgmx original wave function collapse algorithm for bitmap random generation, where given a sample image , a randomly generated image that loosely resembles the source image is generated",
+    link: "https://github.com/muh5329/WaveCollapseEditor"
+  },{
+    image: "/projects/space_prf.jpg",
+    title: "SpacePortfolio",
+    description:"A fun Space themed Portfolio site",
+    link: "https://github.com/muh5329/SpacePortfolio"
+  }
+]
+
 export function ProjectsCarousel() {
   return (
     <Carousel
@@ -21,7 +52,7 @@ export function ProjectsCarousel() {
       className="w-full "
     >
       <CarouselContent className="-mt-1 flex w-[93%] bg-black h-[1600] ">
-        {Array.from({ length: 10 }).map((_, index) => (
+        {model.map((item, index) => (
           <CarouselItem key={index} className="pt-1  md:basis-1/3 ">
             <div className="p-1">
               <Card className=" bg-black border-black">
@@ -31,13 +62,16 @@ export function ProjectsCarousel() {
 
                     {index % 2 === 0 ? (
                         <div className="p-10">
+                        <div className="w-[400px] h-[300px] overflow-hidden rounded-lg relative">
                             <Image
-                                src="/profile_pic/akira_profile.jpg"
-                                width={300}
-                                height={200}
-                                alt="Picture of me"
-                            />  
+                                src={item.image}
+                                layout="fill"
+                                objectFit="cover"
+                                alt="Picture"
+                            />
                         </div>
+                    </div>
+                    
                     ) : null}
 
                     <div className="flex flex-col ml-5">
@@ -46,31 +80,36 @@ export function ProjectsCarousel() {
                         </p>
 
                         <p className="text-xl  text-white mt-3  mb-4 ">
-                             <strong className="font-bold">Crypto Screener Application</strong>
+                             <strong className="font-bold">{item.title}</strong>
                         </p>
 
                         <div className="  text-stone-700 w-[90%]">
                         <p>
-                            Hey there! My name is Muneeb Haq, and I have been programming professionally since August of 2015. I got my start in the world of computer science at a very young age. It began with me tinkering around with Warcraft III custom maps, which eventually turned into an effort to learn how to make my own video games. This led me to computer science, and it has been a deeply gratifying journey ever since.
+                            {item.description}
                         </p>
                         <br />
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                          <Button className=" p-0 bg-black">
+                              <SquareArrowOutUpRight /> 
+                          </Button>
+                        </a>
                         
-                         <Button className=" p-0 bg-black">
-                            <SquareArrowOutUpRight /> 
-                        </Button>
                         </div>
 
                     </div>
 
                     {index % 2 !== 0 ? (
                         <div className="p-10">
-                            <Image
-                                src="/profile_pic/akira_profile.jpg"
-                                width={300}
-                                height={200}
-                                alt="Picture of me"
-                            />  
+                            <div className="w-[400px] h-[300px] overflow-hidden rounded-lg relative">
+                                <Image
+                                    src={item.image}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    alt="Picture"
+                                />
+                            </div>
                         </div>
+                   
                     ) : null}
 
                     

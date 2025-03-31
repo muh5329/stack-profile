@@ -9,10 +9,8 @@ import { Button } from "~/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "~/components/ui/form"
 import { Textarea } from "~/components/ui/textarea"
@@ -21,43 +19,29 @@ const FormSchema = z.object({
   bio: z
     .string()
     .min(10, {
-      message: "Bio must be at least 10 characters.",
+      message: "Question must be at least 10 characters.",
     })
     .max(160, {
-      message: "Bio must not be longer than 30 characters.",
+      message: "Bio must not be longer than 160 characters.",
     }),
 })
 
-export function TextareaForm() {
+export function TextareaForm({ onSubmit }:any) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast("You submitted the following values:", {
-        description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-            </pre>
-          ),
-        action: {
-          label: "Undo",
-          onClick: () => console.log("Undo"),
-        },
-      })
-  }
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="bio"
           render={({ field }) => (
             <FormItem>
-              <FormControl>
+              <FormControl className="border-black">
                 <Textarea
-                  placeholder="How Can i Help You?"
+                  placeholder="How Can I Help You?"
                   className="resize-none"
                   {...field}
                 />

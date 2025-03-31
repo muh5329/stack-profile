@@ -27,6 +27,8 @@ import { Textarea } from "~/components/ui/textarea";
 import { TextareaForm } from "~/components/text-area-form";
 import { Header } from "@radix-ui/react-accordion";
 import CustomHeader from "~/components/header";
+import EmailContact from "~/components/email-contact";
+import EmailSocials from "~/components/email-contact";
 
 export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
   return (
@@ -80,7 +82,7 @@ export default async function Home() {
 
         {/* Hello Me */}
        <div className="grid grid-flow-col pt-20 pr-5" >
-            <div className="flex flex-col pl-20 w-[90%] ">
+            <div className="flex flex-col pl-20 w-[90%]  ">
                 <div className="text-5xl">
                   <span className="block">Hi I'am   <strong>Muneeb Haq</strong></span>
                   <span className="block">a <strong className="font-bold">Full Stack </strong>  
@@ -131,7 +133,7 @@ export default async function Home() {
 
             </div>
 
-            <div className="">
+            <div className="flex justify-end mr-40">
                 <Image
                   src="/profile_pic/ghibli_profile.png"
                   width={300}
@@ -181,7 +183,7 @@ export default async function Home() {
           </a>
           
 
-          <div className="pt-5 ml-5 w-[65%]">
+          <div className="pt-5 ml-5 w-[80%]">
             <HorizontalLine width="w-full" color="bg-black" height="h-1"/>
             <div>
                {/* Spacing */}
@@ -203,8 +205,8 @@ export default async function Home() {
        {/* My Experience  */}
 
        
-       <div className=" flex flex-col pl-20 justify-center bg-black content-center pt-20 pb-10">
-          <p className="text-4xl  text-white mt-4 mb-10 text-center">
+       <div className=" flex flex-col  justify-center bg-black content-center pt-20 pb-10">
+          <p className="text-4xl  text-white  mb-10 text-center">
               My <strong className="font-bold">Experience</strong>
           </p>
           {/* Comcast III */}
@@ -340,7 +342,7 @@ export default async function Home() {
 
           <div className="flex">
 
-            <div className="  rounded-lg  m-10 w-[30%]">
+            <div className="  rounded-lg  mr-20 w-[30%]">
               <Image
                   src="/profile_pic/akira_profile.jpg"
                   width={500}
@@ -391,7 +393,7 @@ export default async function Home() {
                 My <strong className="font-bold">Testimonials</strong>
             </p>
 
-        <div className=" grid grid-flow-col justify-center items-center  gap-10">
+        <div className=" grid sm:grid-flow-col justify-center items-center  gap-10">
 
 
         <div className="flex w-full justify-center content-center drop-shadow-lg">
@@ -407,7 +409,7 @@ export default async function Home() {
                             />
                             <div className="">
                                 <p className="text-md  text-gray-600 pt-7 text-center">
-                                  A reliable engineer who can always be counted on in toughest of times and in deepest of crunches.
+                                  A great joy to work with. Can always count on to review my PRS!
                                 </p> 
 
                             </div>
@@ -417,7 +419,7 @@ export default async function Home() {
 
                             <div className="">
                                 <p className="text-2xl  text-gray-600 pt-7 text-center">
-                                  <strong> Maria Mapples</strong>
+                                  <strong> Emma Patel </strong>
                                 </p> 
 
                                 <div className="">
@@ -455,7 +457,7 @@ export default async function Home() {
 
                             <div className="">
                                 <p className="text-2xl  text-white pt-7 text-center">
-                                  <strong> Jacob Jacobson</strong>
+                                  <strong> Nathan Carter</strong>
                                 </p> 
 
                                 <div className="">
@@ -483,17 +485,17 @@ export default async function Home() {
                             />
                             <div className="">
                                 <p className="text-md  text-gray-600 pt-7 text-center">
-                                  A reliable engineer who can always be counted on in toughest of times and in deepest of crunches.
+                                  Delivers designs to exact detail as per Figma sheets, always threw feedback back and forth  with any discrepancies. 
                                 </p> 
 
                             </div>
                             <div className="pt-6 flex justify-center">
-                                  <HorizontalLine width="w-1/2" color="bg-white" height="h-0.5" />
+                                  <HorizontalLine width="w-1/2" color="bg-black" height="h-0.5" />
                             </div>
 
                             <div className="">
                                 <p className="text-2xl  text-gray-600 pt-7 text-center">
-                                  <strong> Debby Downer</strong>
+                                  <strong> Sophia Reynolds</strong>
                                 </p> 
 
                                 <div className="">
@@ -516,38 +518,7 @@ export default async function Home() {
         <div  id="contact"  className="pl-20 flex justify-center content-center  bg-white  pt-10 mb-20">
               <div className=" grid grid-flow-col gap-20 w-full ">
                   <div className="max-w-96">
-                    <div className=""><ProfileForm/></div>
-                    <div className="pt-5"><ProfileForm/></div>
-                    <div className="pt-5"><ProfileForm/></div>
-                    <div className="pt-5">  <TextareaForm/> </div>
-
-                    <div className=" flex flex-row pt-5 ">
-                      <Button>
-                        Get In Touch
-                      </Button> 
-
-                      <Button className=" border-black ml-5" variant="outline" size="icon">
-                          <Twitter />
-                      </Button>
-
-                      <Button variant="outline" size="icon" className=" border-black ml-5">
-                          <LinkedinIcon />
-                      </Button>
-
-                      <Button variant="outline" size="icon" className="border-black ml-5">
-                          <GithubIcon />
-                      </Button>
-
-                    
-                      <Button variant="outline" size="icon" className="border-black ml-5">
-                          <Mail />
-                      </Button>
-
-                      <Button variant="outline" size="icon" className="border-black ml-5">
-                          <HomeIcon />
-                      </Button>
-
-                    </div>
+                    <EmailSocials/>
                   </div>
 
                   <div className="max-w-7xl">
@@ -570,7 +541,7 @@ export default async function Home() {
                         <p className="text-sm  text-slate-500 pt-7 ">
                             <strong className="uppercase">muh5329@gmail.com</strong>
                             <span className="block">
-                                <strong className="uppercase">1-800-safe-auto</strong> 
+                                <strong className="uppercase">1-800-nott-real</strong> 
                             </span>
                         </p> 
                       </div>
