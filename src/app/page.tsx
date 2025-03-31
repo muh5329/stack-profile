@@ -69,9 +69,12 @@ export default async function Home() {
             
 
             <div className="flex flex-row justify-end pr-10"> 
-            <Button>
-              Resume <Download /> 
-            </Button>
+              <a href="/docs/resume.pdf" download="My_Resume.pdf">
+                <Button>
+                  Resume <Download /> 
+                </Button>
+              </a>
+            
            </div>
         </div>
 
