@@ -13,7 +13,7 @@ import {
 const model = [
     {
         icon: "/skills/icons8-angular-bold/icons8-angular-48.png",
-        text: "Angular"
+        text: "Angular",
     },
     {
         icon: "/skills/icons8-nodejs-windows-10/icons8-nodejs-96.png",
@@ -51,10 +51,10 @@ const model = [
         icon: "/skills/icons8-py-ios-17-filled/icons8-py-50.png",
         text: "Python"
     },
-    {
-        icon: "/skills/icons8-c-sharp-logo-ios-17-outlined/icons8-c-sharp-logo-50.png",
-        text: "C#"
-    },
+    // {
+    //     icon: "/skills/icons8-c-sharp-logo-ios-17-outlined/icons8-c-sharp-logo-50.png",
+    //     text: "C#"
+    // },
     {
         icon: "/skills/icons8-python-ios-17-outlined/icons8-python-50.png",
         text: "Python"
@@ -75,14 +75,14 @@ const model = [
         icon: "/skills/icons8-react-bold/icons8-react-48.png",
         text: "React"
     },
-    {
-        icon: "/skills/icons8-flutter-ios-17-filled/icons8-flutter-50.png",
-        text: "Flutter"
-    },
-    {
-        icon: "/skills/icons8-ruby-programming-language-papercut/icons8-ruby-programming-language-60.png",
-        text: "Ruby"
-    },
+    // {
+    //     icon: "/skills/icons8-flutter-ios-17-filled/icons8-flutter-50.png",
+    //     text: "Flutter"
+    // },
+    // {
+    //     icon: "/skills/icons8-ruby-programming-language-papercut/icons8-ruby-programming-language-60.png",
+    //     text: "Ruby"
+    // },
     {
         icon: "/skills/icons8-golang-ios-17-outlined/icons8-golang-50.png",
         text: "Go"
@@ -99,10 +99,10 @@ const model = [
         icon: "/skills/icons8-sass-ios-17-filled/icons8-sass-50.png",
         text: "Sass"
     },
-    {
-        icon: "/skills/icons8-haskell-ios-17-outlined/icons8-haskell-50.png",
-        text: "Haskell"
-    },
+    // {
+    //     icon: "/skills/icons8-haskell-ios-17-outlined/icons8-haskell-50.png",
+    //     text: "Haskell"
+    // },
     {
         icon: "/skills/icons8-sql-ios-17-outlined/icons8-sql-50.png",
         text: "SQL"
@@ -127,18 +127,18 @@ const model = [
         icon: "/skills/icons8-js-ios-17-outlined/icons8-js-50.png",
         text: "JS"
     },
-    {
-        icon: "/skills/icons8-kotlin-ios-17-outlined/icons8-kotlin-50.png",
-        text: "Kotlin"
-    },
+    // {
+    //     icon: "/skills/icons8-kotlin-ios-17-outlined/icons8-kotlin-50.png",
+    //     text: "Kotlin"
+    // },
     {
         icon: "/skills/icons8-kubernetes-ios-17-outlined/icons8-kubernetes-50.png",
         text: "Kubernetes"
     },
-    {
-        icon: "/skills/icons8-lua-language-ios-17-filled/icons8-lua-language-50.png",
-        text: "Lua"
-    },
+    // {
+    //     icon: "/skills/icons8-lua-language-ios-17-filled/icons8-lua-language-50.png",
+    //     text: "Lua"
+    // },
     {
         icon: "/skills/icons8-swift-ios-17-filled/icons8-swift-50.png",
         text: "Swift"

@@ -14,6 +14,11 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 - [X](Contact Me)
 - [X] (Footer)
 
+## TODO
+
+
+[] Add SQLLite DB 
+
 
 ## Dependencies
 

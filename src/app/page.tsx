@@ -99,14 +99,14 @@ export default async function Home() {
                   {/* BLURB */}
                   <p className="text-lg mt-4">
                       A passionate <strong className="font-bold">Full Stack Developer</strong> with extensive experience in Kubernetes, 
-                      Apache Flink, and cloud architectures. 
+                      Apache Flink, and cloud architectures. I began my programming journey in game development, diving into 
+                      frontend and middleware programming before transitioning to full-stack development. 
                   </p>
                   <Accordion type="single" collapsible>
                     <AccordionItem className=" border-white " value="item-1">
                       <AccordionTrigger className=""> ...</AccordionTrigger>
                       <AccordionContent>
-                            <p className="text-lg mt-4">I began my programming journey in game development, diving into 
-                            frontend and middleware programming before transitioning to full-stack development.I’m capable of building 
+                            <p className="text-lg mt-4">I’m capable of building 
                             scalable applications, designing complex architectures using AWS/Terraform, and orchestrating them with ease.
                         </p>
                         <p className="text-lg mt-4">
@@ -144,30 +144,42 @@ export default async function Home() {
 
        {/* Socials */}
        <div  className=" flex flex-row pl-20  pt-2">
-
-          <Button className=" border-black " variant="outline" size="icon">
-              <Twitter />
-          </Button>
-
-          <Button variant="outline" size="icon" className=" border-black ml-5">
-              <LinkedinIcon />
-          </Button>
-
-          <Button variant="outline" size="icon" className="border-black ml-5">
-              <GithubIcon />
-          </Button>
-
-          <Button variant="outline" size="icon" className="border-black ml-5">
-              <InstagramIcon />
-          </Button>
-
-          <Button variant="outline" size="icon" className="border-black ml-5">
-              <Mail />
-          </Button>
-
-          <Button variant="outline" size="icon" className="border-black ml-5">
-              <HomeIcon />
-          </Button>
+          <a href="https://x.com/Muneeb22125325" target="_blank" rel="noopener noreferrer">
+            <Button className=" border-black " variant="outline" size="icon">
+                <Twitter />
+            </Button>
+          </a>          
+          
+          <a href="https://www.linkedin.com/in/muneeb-haq-87b96098/" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className=" border-black ml-5">
+                <LinkedinIcon />
+            </Button>
+          </a>
+          
+          <a href="https://github.com/muh5329/" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className="border-black ml-5">
+                <GithubIcon />
+            </Button>
+          </a>
+          
+          <a href="https://github.com/muh5329/" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className="border-black ml-5">
+                <InstagramIcon />
+            </Button>
+          </a>
+          
+          <a href="mailto:muh5329@gmail.com" >
+            <Button variant="outline" size="icon" className="border-black ml-5">
+                <Mail />
+            </Button>
+          </a>
+          
+          <a href="https://monkeyfactory.org/" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className="border-black ml-5">
+                <HomeIcon />
+            </Button>
+          </a>
+          
 
           <div className="pt-5 ml-5 w-[65%]">
             <HorizontalLine width="w-full" color="bg-black" height="h-1"/>
@@ -179,7 +191,7 @@ export default async function Home() {
        </div >
 
        {/* Skills  */}
-       <div id="skills" className=" flex flex-col pl-20 justify-center  content-center pt-10">
+       <div id="skills" className=" flex flex-col pl-20 justify-center  content-center pt-10 mb-5 w-[90%]">
           <p className="text-4xl mt-4 mb-2 text-center">
             My <strong className="font-bold">Skills</strong>
           </p>
@@ -191,7 +203,7 @@ export default async function Home() {
        {/* My Experience  */}
 
        
-       <div className=" flex flex-col pl-20 justify-center bg-black content-center pt-20 ">
+       <div className=" flex flex-col pl-20 justify-center bg-black content-center pt-20 pb-10">
           <p className="text-4xl  text-white mt-4 mb-10 text-center">
               My <strong className="font-bold">Experience</strong>
           </p>
@@ -229,7 +241,7 @@ export default async function Home() {
               </div>
 
               <div className="mt-4 mb-1 p-4 pl-10">
-                <p className="text-xs  text-stone-400 ">  
+                <p className="text-sm  text-stone-400 ">  
                     At Comcast, I worked as a Backend Engineer III and previously as an Engineer II, focusing on big data, stream processing, and data analytics. 
                     As a Backend Engineer III (Aug 2021 - Mar 2024), I played a key role in the Data Integration Engine, leveraging Apache Flink to analyze millions of real-time records and detect internet outages. This system enabled proactive and reactive solutions, ensuring customers received assistance before needing to reach out. 
                   </p>
@@ -238,7 +250,7 @@ export default async function Home() {
                     <AccordionItem className="border-black" value="item-1">
                       <AccordionTrigger className="text-black"> ...</AccordionTrigger>
                       <AccordionContent>
-                          <p className="text-xs  text-stone-400  ">
+                          <p className="text-sm  text-stone-400  ">
                           Additionally, I developed the Menshen API using Spring Boot, which provided a recommendation layer and customer state records to downstream consumers. By integrating Redis, I collected real-time metrics such as packet loss and latency, offering a snapshot of a user's network state.  
                             <br /><br />  
                             Previously, as an Engineer II, I worked on Timeline, an Angular-based application that visualized customers' internet support history in an interactive UI, aiding in diagnostics. I also contributed to Elements UI, a React application designed for non-technical partners to ingest diverse data into our timeline system. Furthermore, I developed machine learning models in Databricks (Python) to generate customer solution recommendations. These models were processed by Apache Flink and delivered to end users, enhancing the support experience.  
@@ -287,7 +299,7 @@ export default async function Home() {
               </div>
 
               <div className="mt-4 mb-1 p-4 pl-10">
-                <p className="text-xs  text-stone-400 ">
+                <p className="text-sm  text-stone-400 ">
                   During my six years at Independence Blue Cross (Sep 2015 – Aug 2021), I worked as a Mobile App & Web Developer, progressing from Developer I to II. As part of an agile team, I developed native mobile and desktop web applications that served thousands of health insurance customers. One of my key contributions was building the Provider Finder Tool, which allowed consumers to search for hospitals and doctors and save their preferred providers for future reference.
                 </p>
                 
@@ -295,7 +307,7 @@ export default async function Home() {
                     <AccordionItem className="border-zinc-700" value="item-1">
                       <AccordionTrigger  className="text-zinc-700"> ...</AccordionTrigger>
                       <AccordionContent>
-                        <p className="text-xs text-stone-400"> I also played a crucial role in developing the Softphone application using Angular and Spring Boot, which was used by hundreds of call center representatives to assist customers with their health insurance needs.  Additionally, I created various middleware Java services to interact with databases and external RESTful services, making it easier for developers to access member data and meet business requirements. Another major project I worked on was developing SPA applications, such as Softphone and PCP, which helped onboard millions of users in selecting their Primary Care Physician while enhancing tools for customer support agents. Throughout my time at Independence Blue Cross, I focused on building efficient, user-friendly applications that improved both customer experience and internal support operations.
+                        <p className="text-sm text-stone-400"> I also played a crucial role in developing the Softphone application using Angular and Spring Boot, which was used by hundreds of call center representatives to assist customers with their health insurance needs.  Additionally, I created various middleware Java services to interact with databases and external RESTful services, making it easier for developers to access member data and meet business requirements. Another major project I worked on was developing SPA applications, such as Softphone and PCP, which helped onboard millions of users in selecting their Primary Care Physician while enhancing tools for customer support agents. Throughout my time at Independence Blue Cross, I focused on building efficient, user-friendly applications that improved both customer experience and internal support operations.
                           <br /><br />
                           At Independence Blue Cross (Sep 2015 – Aug 2021), I worked as a Mobile App & Web Developer, progressing from Developer I to II. I contributed to agile teams, developing native mobile and desktop web applications for thousands of health insurance customers. My key projects included:
                           <br /><br />
@@ -592,7 +604,7 @@ export default async function Home() {
                 @2025-2025 Muneeb's Profile
               </p>
               <p className="text-xs  text-white">
-                Made in React
+                Made in Next
               </p>               
           </div>
         </div>
