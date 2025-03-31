@@ -25,6 +25,8 @@ import { Card, CardContent } from "~/components/ui/card";
 import { ProfileForm } from "~/components/contact-form";
 import { Textarea } from "~/components/ui/textarea";
 import { TextareaForm } from "~/components/text-area-form";
+import { Header } from "@radix-ui/react-accordion";
+import CustomHeader from "~/components/header";
 
 export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
   return (
@@ -61,13 +63,9 @@ export default async function Home() {
                 />
                 <div className=" pl-4 font-bold pt-1"> Muneeb's Profile </div>
             </div>
-            <div className="flex flex-row justify-center"> 
-              
-              <div className="flex  "> About me</div>
-              <div className="flex pl-5 "> Skills</div>
-              <div className="flex pl-5 "> Projects</div>
-              <div className="flex pl-5 "> Socials</div>
-            </div>
+            
+
+            <CustomHeader/>
             
 
             <div className="flex flex-row justify-end pr-10"> 
@@ -178,7 +176,7 @@ export default async function Home() {
        </div >
 
        {/* Skills  */}
-       <div className=" flex flex-col pl-20 justify-center  content-center pt-10">
+       <div id="skills" className=" flex flex-col pl-20 justify-center  content-center pt-10">
           <p className="text-4xl mt-4 mb-2 text-center">
             My <strong className="font-bold">Skills</strong>
           </p>
@@ -320,7 +318,7 @@ export default async function Home() {
        </div>
 
        {/* About Me */}
-       <div className=" flex flex-col pl-20 justify-center bg-white content-center pt-10 pb-10 ">
+       <div  id="about" className=" flex flex-col pl-20 justify-center bg-white content-center pt-10 pb-10 ">
           <p className="text-4xl  text-black mt-4 mb-10 text-center">
               About <strong className="font-bold">Me</strong>
           </p>
@@ -360,7 +358,7 @@ export default async function Home() {
        </div>
 
          {/* My Projects  */}
-        <div className=" flex flex-col pl-20 justify-center bg-black content-center pt-10">
+        <div id="projects" className=" flex flex-col pl-20 justify-center bg-black content-center pt-10">
           <p className="text-4xl  text-white mt-4 mb-10 text-center">
               My <strong className="font-bold">Projects</strong>
           </p>
@@ -500,7 +498,7 @@ export default async function Home() {
        </div>
 
         {/* Contact Me  */}
-        <div className="pl-20 flex justify-center content-center  bg-white  pt-10 mb-20">
+        <div  id="contact"  className="pl-20 flex justify-center content-center  bg-white  pt-10 mb-20">
               <div className=" grid grid-flow-col gap-20 w-full ">
                   <div className="max-w-96">
                     <div className=""><ProfileForm/></div>
