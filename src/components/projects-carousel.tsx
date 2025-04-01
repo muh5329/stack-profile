@@ -58,7 +58,7 @@ export function ProjectsCarousel() {
       orientation="vertical"
       className="w-full "
     >
-      <CarouselContent className="-mt-1 flex w-[93%] bg-black h-[1600] ">
+      <CarouselContent className="-mt-1 flex w-[93%] bg-black h-[1600px] ">
         {model.map((item, index) => (
           <CarouselItem key={index} className="pt-1 basis-1/3  md:basis-1/3 ">
             <div className="sm:p-1">
