@@ -12,7 +12,7 @@ import Image from 'next/image'
 import { Button } from "./ui/button"
 import {SquareArrowOutUpRight} from "lucide-react"
 import { Description } from "@radix-ui/react-toast"
-import { HorizontalLine } from "~/app/page"
+import { HorizontalLine } from "./line"
 
 const model = [
   {

@@ -29,18 +29,9 @@ import { Header } from "@radix-ui/react-accordion";
 import CustomHeader from "~/components/header";
 import EmailContact from "~/components/email-contact";
 import EmailSocials from "~/components/email-contact";
+import { HorizontalLine } from "~/components/line";
 
-export function VerticalLine({ height = "h-full", color = "bg-black", width = "w-px" }) {
-  return (
-    <div className={`${height} ${color} ${width}`} />
-  );
-}
 
-export  function HorizontalLine({ width = "w-full", color = "bg-black", height = "h-px" }) {
-  return (
-    <div className={`${width} ${color} ${height}`} />
-  );
-}
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });

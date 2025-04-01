@@ -21,6 +21,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Ensure the prisma folder is copied
+COPY prisma ./prisma
+
 # Run Prisma generate to generate the Prisma client
 RUN npx prisma generate
 
