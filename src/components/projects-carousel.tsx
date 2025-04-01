@@ -12,6 +12,7 @@ import Image from 'next/image'
 import { Button } from "./ui/button"
 import {SquareArrowOutUpRight} from "lucide-react"
 import { Description } from "@radix-ui/react-toast"
+import { HorizontalLine } from "~/app/page"
 
 const model = [
   {
@@ -53,16 +54,16 @@ export function ProjectsCarousel() {
     >
       <CarouselContent className="-mt-1 flex w-[93%] bg-black h-[1600] ">
         {model.map((item, index) => (
-          <CarouselItem key={index} className="pt-1  md:basis-1/3 ">
-            <div className="p-1">
+          <CarouselItem key={index} className="pt-1 basis-1/3  md:basis-1/3 ">
+            <div className="sm:p-1">
               <Card className=" bg-black border-black">
-                <CardContent className="grid grid-flow-col ">
+                <CardContent className="grid sm:grid-flow-col ">
 
 
 
                     {index % 2 === 0 ? (
-                        <div className="p-10">
-                        <div className="w-[400px] h-[300px] overflow-hidden rounded-lg relative">
+                      <div className=" pt-5 sm:p-10">
+                        <div className="w-[343px] h-[397px] sm:w-[400px] sm:h-[300px] overflow-hidden rounded-lg relative">
                             <Image
                                 src={item.image}
                                 layout="fill"
@@ -75,7 +76,7 @@ export function ProjectsCarousel() {
                     ) : null}
 
                     <div className="flex flex-col ml-5">
-                        <p className="text-3xl  text-white mt-10   ">
+                        <p className="text-3xl  text-white mt-5 sm:mt-10   ">
                              <strong className="font-bold">{index < 9 ? `0${index + 1}` : index + 1}</strong>
                         </p>
 
@@ -99,8 +100,8 @@ export function ProjectsCarousel() {
                     </div>
 
                     {index % 2 !== 0 ? (
-                        <div className="p-10">
-                            <div className="w-[400px] h-[300px] overflow-hidden rounded-lg relative">
+                        <div className="pt-5 sm:p-10">
+                            <div className="w-[343px] h-[397px] sm:w-[400px] sm:h-[300px] overflow-hidden rounded-lg relative">
                                 <Image
                                     src={item.image}
                                     layout="fill"
@@ -111,8 +112,10 @@ export function ProjectsCarousel() {
                         </div>
                    
                     ) : null}
-
-                    
+                  <div  className="block pt-3 sm:hidden sm:pt-3">
+                    <HorizontalLine width="w-full" color="bg-stone-950" height="h-1" />
+                  </div>
+                  
                   
                 </CardContent>
               </Card>

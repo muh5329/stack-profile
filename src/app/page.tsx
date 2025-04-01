@@ -56,21 +56,20 @@ export default async function Home() {
 
         {/* Header */}
         <div className="grid row-5 grid-flow-col  pt-10 ">
-            <div className=" flex  pl-20 ">
-                <Image
-                  src="/profile_pic/top.jpg"
-                  width={30}
-                  height={5}
-                  alt="Picture of computer"
-                />
-                <div className=" pl-4 font-bold pt-1"> Muneeb's Profile </div>
-            </div>
-            
+            <div className="flex items-center pl-10 sm:pl-20 ">
+            <Image
+              src="/profile_pic/top.jpg"
+              width={30}
+              height={5}
+              alt="Picture of computer"
+            />
+            <div className="pl-4 font-bold text-black pt-1">Muneeb's Profile</div>
+          </div>
 
             <CustomHeader/>
             
 
-            <div className="flex flex-row justify-end pr-10"> 
+            <div className="hidden md:flex flex-row justify-end pr-10"> 
               <a href="/docs/resume.pdf" download="My_Resume.pdf">
                 <Button>
                   Resume <Download /> 
@@ -81,9 +80,9 @@ export default async function Home() {
         </div>
 
         {/* Hello Me */}
-       <div className="grid grid-flow-col pt-20 pr-5" >
+       <div className="grid sm:grid-flow-col pt-10 sm:pt-20 pr-5" >
             <div className="flex flex-col pl-20 w-[90%]  ">
-                <div className="text-5xl">
+                <div className="text-3xl sm:text-5xl">
                   <span className="block">Hi I'am   <strong>Muneeb Haq</strong></span>
                   <span className="block">a <strong className="font-bold">Full Stack </strong>  
                               <span style={{
@@ -96,7 +95,7 @@ export default async function Home() {
                   </span>
                   <span className="block">based in the <strong className="uppercase">UNITED STATES</strong></span>
               </div>
-              <div className="flex flex-col w-[500] ">
+              <div className="flex flex-col sm:w-[500] md:w-[600] lg:w-[700] xl:w-[1000] ">
 
                   {/* BLURB */}
                   <p className="text-lg mt-4">
@@ -133,7 +132,7 @@ export default async function Home() {
 
             </div>
 
-            <div className="flex justify-end mr-40">
+            <div className="flex justify-center sm:justify-end sm:mr-40">
                 <Image
                   src="/profile_pic/ghibli_profile.png"
                   width={300}
@@ -145,7 +144,7 @@ export default async function Home() {
        </div>
 
        {/* Socials */}
-       <div  className=" flex flex-row pl-20  pt-2">
+       <div  className=" flex flex-row pl-10 pt-5 sm:pl-20  sm:pt-2">
           <a href="https://x.com/Muneeb22125325" target="_blank" rel="noopener noreferrer">
             <Button className=" border-black " variant="outline" size="icon">
                 <Twitter />
@@ -183,7 +182,7 @@ export default async function Home() {
           </a>
           
 
-          <div className="pt-5 ml-5 w-[80%]">
+          <div className="pt-5 ml-5 w-[80%] hidden sm:block">
             <HorizontalLine width="w-full" color="bg-black" height="h-1"/>
             <div>
                {/* Spacing */}
@@ -193,7 +192,7 @@ export default async function Home() {
        </div >
 
        {/* Skills  */}
-       <div id="skills" className=" flex flex-col pl-20 justify-center  content-center pt-10 mb-5 w-[90%]">
+       <div id="skills" className=" flex flex-col pl-10 sm:pl-20 justify-center  content-center pt-10 mb-5 w-[90%]">
           <p className="text-4xl mt-4 mb-2 text-center">
             My <strong className="font-bold">Skills</strong>
           </p>
@@ -203,17 +202,15 @@ export default async function Home() {
 
 
        {/* My Experience  */}
-
-       
-       <div className=" flex flex-col  justify-center bg-black content-center pt-20 pb-10">
+       <div className=" flex flex-col  justify-center bg-black content-center pt-10 sm:pt-20 pb-10">
           <p className="text-4xl  text-white  mb-10 text-center">
               My <strong className="font-bold">Experience</strong>
           </p>
           {/* Comcast III */}
-          <div className="border border-x-stone-400 rounded-lg  m-10 ">
+          <div className="border border-x-stone-400 rounded-lg  mb-5 ml-5 mr-5 sm:mb-10 sm:ml-10 sm:mr-10  ">
               <div className="grid grid-flow-col row-6  " >
                     {/* Company icon */}
-                    <div className="pl-3 pt-5 flex flex-row col-span-1  ">  
+                    <div className="pl-3 pt-5 flex flex-col sm:flex-row col-span-1  ">  
                       <div className="mt-5  ml-4">
                           <Image
                           src="/companies/comcast_logo.jpg"
@@ -224,7 +221,7 @@ export default async function Home() {
                       </div>
 
                       <div className="flex items-center  w-[34%] ">
-                        <p className="text-lg pl-5 text-white mt-4 mb-5 text-center ">
+                        <p className="text-lg pl-5 text-white mt-4 sm:mb-5 sm:text-center ">
                             <strong className="font-bold">Engineer II-III at Comcast</strong>
                         </p>
                       </div>
@@ -232,8 +229,8 @@ export default async function Home() {
                     
                       
 
-                      <div className="flex flex-row justify-end col-span-2 w-[60%] ">
-                        <p className="text-xs pl-10 text-stone-400 mt-4 mb-5 text-right">
+                      <div className="flex flex-row sm:justify-end col-span-2 w-[60%] ">
+                        <p className="text-xs pl-5 sm:pl-10 text-stone-400 mt-4 mb-5 text-right">
                           <strong className="font-bold">Aug 2021 - Now</strong>
                         </p>
                       </div>
@@ -242,7 +239,7 @@ export default async function Home() {
                   
               </div>
 
-              <div className="mt-4 mb-1 p-4 pl-10">
+              <div className="pl-8 sm:mt-4 mb-1 p-4 sm:pl-10">
                 <p className="text-sm  text-stone-400 ">  
                     At Comcast, I worked as a Backend Engineer III and previously as an Engineer II, focusing on big data, stream processing, and data analytics. 
                     As a Backend Engineer III (Aug 2021 - Mar 2024), I played a key role in the Data Integration Engine, leveraging Apache Flink to analyze millions of real-time records and detect internet outages. This system enabled proactive and reactive solutions, ensuring customers received assistance before needing to reach out. 
@@ -268,10 +265,10 @@ export default async function Home() {
           </div>
 
           {/* IBC  */}
-          <div className="border border-x-stone-400 rounded-lg  bg-zinc-700 m-10 ">
+          <div className="border border-x-stone-400 rounded-lg  bg-zinc-700 mb-5 ml-5 mr-5 sm:mb-10 sm:ml-10 sm:mr-10 ">
               <div className="grid grid-flow-col row-6  " >
                     {/* Company icon */}
-                    <div className="pl-3 pt-5 flex flex-row col-span-1  ">  
+                    <div className="pl-3 pt-5 flex flex-col sm:flex-row col-span-1  ">  
                       <div className="mt-5  ml-4">
                           <Image
                             src="/companies/independence_blue_cross_logo.jpg"
@@ -282,7 +279,7 @@ export default async function Home() {
                       </div>
 
                       <div className="flex items-center  w-[34%] ">
-                        <p className="text-lg pl-5 text-white mt-4 mb-5 text-center ">
+                        <p className="text-lg pl-5 text-white mt-4 sm:mb-5 sm:text-center ">
                             <strong className="font-bold"> Engineer I -II Independence Blue Cross </strong>
                         </p>
                       </div>
@@ -290,8 +287,8 @@ export default async function Home() {
                     
                       
 
-                      <div className="flex flex-row justify-end col-span-2 w-[60%] ">
-                        <p className="text-xs pl-10 text-stone-400 mt-4 mb-5 text-right">
+                      <div className="flex flex-row sm:justify-end col-span-2 w-[60%] ">
+                        <p className="text-xs pl-5 sm:pl-10 text-stone-400 mt-4 mb-5 text-right">
                           <strong className="font-bold">Sep 2015 – Aug 2021</strong>
                         </p>
                       </div>
@@ -300,7 +297,7 @@ export default async function Home() {
                   
               </div>
 
-              <div className="mt-4 mb-1 p-4 pl-10">
+              <div className="pl-8 sm:mt-4 mb-1 p-4 sm:pl-10">
                 <p className="text-sm  text-stone-400 ">
                   During my six years at Independence Blue Cross (Sep 2015 – Aug 2021), I worked as a Mobile App & Web Developer, progressing from Developer I to II. As part of an agile team, I developed native mobile and desktop web applications that served thousands of health insurance customers. One of my key contributions was building the Provider Finder Tool, which allowed consumers to search for hospitals and doctors and save their preferred providers for future reference.
                 </p>
@@ -335,14 +332,14 @@ export default async function Home() {
        </div>
 
        {/* About Me */}
-       <div  id="about" className=" flex flex-col pl-20 justify-center bg-white content-center pt-10 pb-10 ">
+       <div  id="about" className=" pl-5 pr-5 flex flex-col sm:pl-20 justify-center bg-white content-center sm:pt-10 pb-10 ">
           <p className="text-4xl  text-black mt-4 mb-10 text-center">
               About <strong className="font-bold">Me</strong>
           </p>
 
-          <div className="flex">
+          <div className="flex flex-col  sm:flex-row">
 
-            <div className="  rounded-lg  mr-20 w-[30%]">
+            <div className=" rounded-lg mx-auto sm:w-[30%] md:mx-0 md:ml-0">
               <Image
                   src="/profile_pic/akira_profile.jpg"
                   width={500}
@@ -350,7 +347,7 @@ export default async function Home() {
                   alt="Picture of me"
                 />           
             </div>
-          <div className=" text-md  text-stone-700 w-[50%]">
+          <div className=" pt-10 sm:pt-0 text-md  text-stone-700 sm:w-[50%]">
               <p>
                 Hey there! My name is Muneeb Haq, and I have been programming professionally since August of 2015. I got my start in the world of computer science at a very young age. It began with me tinkering around with Warcraft III custom maps, which eventually turned into an effort to learn how to make my own video games. This led me to computer science, and it has been a deeply gratifying journey ever since.
               </p>
@@ -375,20 +372,19 @@ export default async function Home() {
        </div>
 
          {/* My Projects  */}
-        <div id="projects" className=" flex flex-col pl-20 justify-center bg-black content-center pt-10">
-          <p className="text-4xl  text-white mt-4 mb-10 text-center">
+        <div id="projects" className=" p-0 flex flex-col sm:pl-20 justify-center bg-black content-center pt-10">
+          <p className="text-4xl  text-white mt-4 sm:mb-10 text-center">
               My <strong className="font-bold">Projects</strong>
           </p>
 
           <div className="flex w-full">
-
             <ProjectsCarousel/>
           </div>
 
         </div>
 
        {/* My Testimonials  */}
-       <div className="pl-20 justify-center bg-white content-center pt-10 mb-20">
+       <div className="sm:pl-20 justify-center bg-white content-center pt-10 mb-20">
             <p className="text-4xl  text-black mt-4 mb-20 text-center">
                 My <strong className="font-bold">Testimonials</strong>
             </p>
@@ -515,8 +511,8 @@ export default async function Home() {
        </div>
 
         {/* Contact Me  */}
-        <div  id="contact"  className="pl-20 flex justify-center content-center  bg-white  pt-10 mb-20">
-              <div className=" grid grid-flow-col gap-20 w-full ">
+        <div  id="contact"  className="pl-2 sm:pl-20 flex justify-center content-center  bg-white  pt-10 mb-20">
+              <div className=" grid sm:grid-flow-col gap-10 sm:gap-20 w-full justify-center ">
                   <div className="max-w-96">
                     <EmailSocials/>
                   </div>
@@ -532,10 +528,12 @@ export default async function Home() {
                               </span> </span>
                           <span className="block"> <strong className="uppercase">Get in Touch!</strong></span>
                       </div>
-                          
-                      <p className="text-sm  text-gray-500 pt-7 ">
-                            I seek to push the limits of creativity and hope to do it in a fun and highly professional way. You wont regret this working opportunity!
-                      </p> 
+                      <div className="flex ">
+                        <p className="max-w-xs sm:max-w-7xl text-sm text-gray-500 pt-7 ">
+                          I seek to push the limits of creativity and hope to do it in a fun and highly professional way. You won’t regret this working opportunity!
+                        </p> 
+                      </div>
+                      
 
                       <div className="" >
                         <p className="text-sm  text-slate-500 pt-7 ">
@@ -557,7 +555,7 @@ export default async function Home() {
        
        
         {/* Footer */}
-        <div className="flex flex-row items-center justify-between bg-black pb-10 pt-10 px-20">
+        <div className="flex flex-row sm:items-center justify-between bg-black pb-10 pt-10 px-10 sm:px-20">
           {/* Left Section */}
           <div className="flex items-center">
             <Image

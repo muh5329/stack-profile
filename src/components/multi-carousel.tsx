@@ -176,7 +176,7 @@ export function MultiCarousel() {
             const nextItem = model[index + 1];
 
             return (
-            <CarouselItem key={index} className="basis-1/2 pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/5 p-7">
+            <CarouselItem key={index} className="basis-1/2 pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/5 sm:p-7">
                 <div className="p-1">
                 {/* First card (current item) */}
                 <Card className="mt-5 p-2 rounded-none border-zinc-950">

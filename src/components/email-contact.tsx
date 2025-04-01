@@ -86,11 +86,7 @@ const EmailSocials = () => {
                     <Mail />
                 </Button>
             </a>
-            <a href="https://monkeyfactory.org/" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="icon" className="border-black ml-5">
-                    <HomeIcon />
-                </Button>
-            </a>
+            
         </div>
       </div>
     </>
