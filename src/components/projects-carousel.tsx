@@ -40,6 +40,12 @@ const model = [
     title: "SpacePortfolio",
     description:"A fun Space themed Portfolio site",
     link: "https://github.com/muh5329/SpacePortfolio"
+  },
+  {
+    image: "/projects/web_serv.jpg",
+    title: "DebianWebServer",
+    description:"Debian web server utilities and program",
+    link: "https://github.com/muh5329/DebianWebServer/tree/main"
   }
 ]
 
@@ -84,16 +90,16 @@ export function ProjectsCarousel() {
                              <strong className="font-bold">{item.title}</strong>
                         </p>
 
-                        <div className="  text-stone-700 w-[90%]">
-                        <p>
-                            {item.description}
-                        </p>
-                        <br />
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                          <Button className=" p-0 bg-black">
-                              <SquareArrowOutUpRight /> 
-                          </Button>
-                        </a>
+                        <div className="  text-stone-700 ">
+                          <p>
+                              {item.description}
+                          </p>
+                          <br />
+                          <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <Button className=" p-0 bg-black">
+                                <SquareArrowOutUpRight /> 
+                            </Button>
+                          </a>
                         
                         </div>
 
