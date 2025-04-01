@@ -4,7 +4,8 @@ import {
   Keyboard,
   Mail,
   User,
-  AlignJustify
+  AlignJustify,
+  FileType2
 } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import {
@@ -35,7 +36,7 @@ export function DropDownMenuHome() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Navigation</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem onClick={() => scrollToSection('about')}>
@@ -53,6 +54,19 @@ export function DropDownMenuHome() {
           <DropdownMenuItem onClick={() => scrollToSection('contact')}>
             <Mail />
             <span>Socials</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/docs/resume.pdf'; 
+                link.download = 'Muneeb_haq_Resume.pdf'; 
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+            >
+              <FileType2 />
+              <span>Resume</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

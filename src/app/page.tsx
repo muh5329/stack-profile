@@ -70,7 +70,7 @@ export default async function Home() {
             
 
             <div className="hidden md:flex flex-row justify-end pr-10"> 
-              <a href="/docs/resume.pdf" download="My_Resume.pdf">
+              <a href="/docs/resume.pdf" download="Muneeb_haq_Resume.pdf">
                 <Button>
                   Resume <Download /> 
                 </Button>
@@ -347,7 +347,7 @@ export default async function Home() {
                   alt="Picture of me"
                 />           
             </div>
-          <div className=" pt-10 sm:pt-0 text-md  text-stone-700 sm:w-[50%]">
+          <div className=" pt-10 sm:pt-0 text-md  md:pl-10 text-stone-700 sm:w-[50%]">
               <p>
                 Hey there! My name is Muneeb Haq, and I have been programming professionally since August of 2015. I got my start in the world of computer science at a very young age. It began with me tinkering around with Warcraft III custom maps, which eventually turned into an effort to learn how to make my own video games. This led me to computer science, and it has been a deeply gratifying journey ever since.
               </p>

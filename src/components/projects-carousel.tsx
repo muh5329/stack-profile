@@ -62,7 +62,7 @@ export function ProjectsCarousel() {
 
 
                     {index % 2 === 0 ? (
-                      <div className=" pt-5 sm:p-10">
+                      <div className=" pt-5 sm:p-10 flex sm:justify-end">
                         <div className="w-[343px] h-[397px] sm:w-[400px] sm:h-[300px] overflow-hidden rounded-lg relative">
                             <Image
                                 src={item.image}
@@ -100,7 +100,7 @@ export function ProjectsCarousel() {
                     </div>
 
                     {index % 2 !== 0 ? (
-                        <div className="pt-5 sm:p-10">
+                        <div className="pt-5 sm:p-10  flex sm:justify-start">
                             <div className="w-[343px] h-[397px] sm:w-[400px] sm:h-[300px] overflow-hidden rounded-lg relative">
                                 <Image
                                     src={item.image}
