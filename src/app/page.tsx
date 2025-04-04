@@ -61,7 +61,7 @@ export default async function Home() {
             
 
             <div className="hidden md:flex flex-row justify-end pr-10"> 
-              <a href="/docs/resume.pdf" download="Muneeb_haq_Resume.pdf">
+              <a href="/docs/Resume.pdf" download="Muneeb_haq_Resume.pdf">
                 <Button>
                   Resume <Download /> 
                 </Button>
