@@ -58,7 +58,7 @@ export function DropDownMenuHome() {
           <DropdownMenuItem
               onClick={() => {
                 const link = document.createElement('a');
-                link.href = '/docs/resume.pdf'; 
+                link.href = '/docs/Resume.pdf'; 
                 link.download = 'Muneeb_haq_Resume.pdf'; 
                 document.body.appendChild(link);
                 link.click();
