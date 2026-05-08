@@ -6,8 +6,8 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "Muneebs Profile",
-  description: "Personal Profile Page",
+  title: "Vertical | Notes on systems, games, and culture",
+  description: "Editorial publication for experimental software, essays, and project notes.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

@@ -1,0 +1,289 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { Moon, Search } from "lucide-react";
+import { Button } from "~/components/ui/button";
+import { Card } from "~/components/ui/card";
+
+type Post = {
+  title: string;
+  excerpt: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  category: string;
+};
+
+const categories = [
+  "All",
+  "Essays",
+  "RTS",
+  "Graphics",
+  "Simulation",
+  "AI",
+  "Systems",
+  "Culture",
+  "Experiments",
+];
+
+const posts: Post[] = [
+  {
+    title: "The Cathedral and the Bazaar",
+    excerpt:
+      "A field guide for building software that feels alive, social, and structurally open to emergent play.",
+    date: "May 1, 2026",
+    readingTime: "6 min",
+    tags: ["Culture", "Systems"],
+    category: "Essays",
+  },
+  {
+    title: "On Simulation and Ritual",
+    excerpt:
+      "Why ritualized interfaces matter for modern tools and how procedural habits shape our digital landscapes.",
+    date: "Apr 22, 2026",
+    readingTime: "5 min",
+    tags: ["Simulation", "Culture"],
+    category: "Culture",
+  },
+  {
+    title: "Building Tiny Worlds",
+    excerpt:
+      "A practical note on constraints, player agency, and making systems feel dense without overwhelming the user.",
+    date: "Mar 30, 2026",
+    readingTime: "7 min",
+    tags: ["Graphics", "RTS"],
+    category: "Graphics",
+  },
+  {
+    title: "The Joy of Constraints",
+    excerpt:
+      "A short meditation on why limits are the most creative design tool I use when shaping experimental software.",
+    date: "Mar 10, 2026",
+    readingTime: "4 min",
+    tags: ["Experiments", "Systems"],
+    category: "Experiments",
+  },
+  {
+    title: "Procedural Pathfinding for Persistence",
+    excerpt:
+      "A note about building RTS intelligence that feels deliberate and flexible instead of brittle and scripted.",
+    date: "Feb 14, 2026",
+    readingTime: "8 min",
+    tags: ["RTS", "AI"],
+    category: "RTS",
+  },
+];
+
+const pinnedCulture = [
+  "Signal Sculptures: Making Systems Speak",
+  "Architecture of a Quiet Interface",
+  "The Legend of Slow Software",
+  "Personal Notes on Platform Mythology",
+];
+
+const readingNow = [
+  "Aesthetic Algorithms",
+  "On Playful Infrastructure",
+  "Rituals of Code Review",
+];
+
+const experiments = [
+  "RTS pathfinding mesh",
+  "Procedural heraldry engine",
+  "Goblin tools for creative scripting",
+  "Agent-driven publishing flow",
+];
+
+const links = [
+  { label: "GitHub", url: "https://github.com/muh5329" },
+  { label: "X / Twitter", url: "https://x.com/Muneeb22125325" },
+  { label: "Email", url: "mailto:muh5329@gmail.com" },
+  { label: "RSS", url: "/rss.xml" },
+];
+
+function matches(post: Post, query: string) {
+  const normalized = query.toLowerCase();
+  return (
+    post.title.toLowerCase().includes(normalized) ||
+    post.excerpt.toLowerCase().includes(normalized) ||
+    post.tags.some((tag) => tag.toLowerCase().includes(normalized))
+  );
+}
+
+export function EditorialHome() {
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) => {
+      const categoryMatch = activeCategory === "All" || post.category === activeCategory || post.tags.includes(activeCategory);
+      const searchMatch = !search || matches(post, search);
+      return categoryMatch && searchMatch;
+    });
+  }, [activeCategory, search]);
+
+  return (
+    <main className="min-h-screen bg-slate-50 text-slate-950">
+      <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-slate-950">
+            Vertical
+          </Link>
+
+          <div className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
+            <Link href="/" className="hover:text-slate-950">Home</Link>
+            <Link href="/profile" className="hover:text-slate-950">Profile</Link>
+            <Link href="/" className="hover:text-slate-950">Archive</Link>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon" className="rounded-full border border-slate-200 text-slate-700 hover:bg-slate-100">
+              <Moon className="h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/profile">Profile</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <section className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
+          <div className="space-y-5">
+            <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Personal publication</p>
+            <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl">
+              Notes on systems, games, simulation, culture, and strange software.
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-slate-700">
+              An editorial notebook for projects, essays, and cultural fragments. The feed surfaces ideas, field notes, and experiments in a calm, thoughtful layout.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Pinned in culture</p>
+            <div className="mt-5 space-y-3 text-sm text-slate-700">
+              {pinnedCulture.map((item) => (
+                <div key={item} className="border-b border-slate-100 pb-3 last:border-0 last:pb-0">
+                  <p className="font-medium text-slate-950">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="sticky top-[76px] z-20 border-b border-slate-200 bg-slate-50/95 px-6 py-4 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`rounded-full border px-4 py-2 text-sm transition ${
+                  activeCategory === category
+                    ? "border-slate-900 bg-slate-950 text-white"
+                    : "border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
+                }`}
+                type="button"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-1 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm sm:max-w-md">
+            <Search className="h-4 w-4 text-slate-500" />
+            <label htmlFor="home-search" className="sr-only">
+              Search articles
+            </label>
+            <input
+              id="home-search"
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search titles, tags, excerpts"
+              className="w-full border-none bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="space-y-6">
+          {filteredPosts.length === 0 ? (
+            <Card className="rounded-3xl border border-slate-200 bg-white p-8">
+              <p className="text-slate-700">No posts match that search. Try another term or category.</p>
+            </Card>
+          ) : (
+            filteredPosts.map((post) => (
+              <article
+                key={post.title}
+                className="group rounded-3xl border border-slate-200 bg-white p-8 transition hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-50"
+              >
+                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                  <span>{post.date}</span>
+                  <span>·</span>
+                  <span>{post.readingTime}</span>
+                </div>
+                <h2 className="mt-4 text-3xl font-semibold text-slate-950">{post.title}</h2>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">{post.excerpt}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-slate-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))
+          )}
+        </div>
+
+        <aside className="space-y-6">
+          <Card className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Reading now</p>
+            <div className="mt-5 space-y-3 text-sm text-slate-700">
+              {readingNow.map((item) => (
+                <div key={item} className="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+                  <p className="font-medium text-slate-950">{item}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Currently exploring</p>
+            <div className="mt-5 space-y-3 text-sm text-slate-700">
+              {experiments.map((item) => (
+                <div key={item} className="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+                  <p className="font-medium text-slate-950">{item}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Links</p>
+            <div className="mt-5 space-y-3 text-sm text-slate-700">
+              {links.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-slate-950 transition hover:border-slate-300"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </Card>
+        </aside>
+      </section>
+    </main>
+  );
+}
