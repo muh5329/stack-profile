@@ -5,15 +5,7 @@ import Link from "next/link";
 import { Moon, Search } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
-
-type Post = {
-  title: string;
-  excerpt: string;
-  date: string;
-  readingTime: string;
-  tags: string[];
-  category: string;
-};
+import { posts, type Post } from "~/lib/editorial-posts";
 
 const categories = [
   "All",
@@ -25,54 +17,6 @@ const categories = [
   "Systems",
   "Culture",
   "Experiments",
-];
-
-const posts: Post[] = [
-  {
-    title: "The Cathedral and the Bazaar",
-    excerpt:
-      "A field guide for building software that feels alive, social, and structurally open to emergent play.",
-    date: "May 1, 2026",
-    readingTime: "6 min",
-    tags: ["Culture", "Systems"],
-    category: "Essays",
-  },
-  {
-    title: "On Simulation and Ritual",
-    excerpt:
-      "Why ritualized interfaces matter for modern tools and how procedural habits shape our digital landscapes.",
-    date: "Apr 22, 2026",
-    readingTime: "5 min",
-    tags: ["Simulation", "Culture"],
-    category: "Culture",
-  },
-  {
-    title: "Building Tiny Worlds",
-    excerpt:
-      "A practical note on constraints, player agency, and making systems feel dense without overwhelming the user.",
-    date: "Mar 30, 2026",
-    readingTime: "7 min",
-    tags: ["Graphics", "RTS"],
-    category: "Graphics",
-  },
-  {
-    title: "The Joy of Constraints",
-    excerpt:
-      "A short meditation on why limits are the most creative design tool I use when shaping experimental software.",
-    date: "Mar 10, 2026",
-    readingTime: "4 min",
-    tags: ["Experiments", "Systems"],
-    category: "Experiments",
-  },
-  {
-    title: "Procedural Pathfinding for Persistence",
-    excerpt:
-      "A note about building RTS intelligence that feels deliberate and flexible instead of brittle and scripted.",
-    date: "Feb 14, 2026",
-    readingTime: "8 min",
-    tags: ["RTS", "AI"],
-    category: "RTS",
-  },
 ];
 
 const pinnedCulture = [
@@ -124,11 +68,11 @@ export function EditorialHome() {
   }, [activeCategory, search]);
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
+    <main className="h-screen overflow-hidden bg-slate-50 text-slate-950">
       <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="/" className="text-lg font-semibold tracking-tight text-slate-950">
-            Vertical
+            Monkey Factory
           </Link>
 
           <div className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
@@ -151,17 +95,17 @@ export function EditorialHome() {
       <section className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
           <div className="space-y-5">
-            <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Personal publication</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Personal musings</p>
             <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl">
-              Notes on systems, games, simulation, culture, and strange software.
+              Thoughts and experiments on games, software, and random interests.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-700">
-              An editorial notebook for projects, essays, and cultural fragments. The feed surfaces ideas, field notes, and experiments in a calm, thoughtful layout.
+              An editorial notebook for projects, essays, and random things in software.
             </p>
           </div>
 
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Pinned in culture</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Pinned</p>
             <div className="mt-5 space-y-3 text-sm text-slate-700">
               {pinnedCulture.map((item) => (
                 <div key={item} className="border-b border-slate-100 pb-3 last:border-0 last:pb-0">
@@ -210,16 +154,17 @@ export function EditorialHome() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <div className="space-y-6">
+        <div className="space-y-6 overflow-y-auto pr-2 max-h-[65vh]">
           {filteredPosts.length === 0 ? (
             <Card className="rounded-3xl border border-slate-200 bg-white p-8">
               <p className="text-slate-700">No posts match that search. Try another term or category.</p>
             </Card>
           ) : (
             filteredPosts.map((post) => (
-              <article
-                key={post.title}
-                className="group rounded-3xl border border-slate-200 bg-white p-8 transition hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-50"
+              <Link
+                key={post.slug}
+                href={`/editorial/${post.slug}`}
+                className="group block rounded-3xl border border-slate-200 bg-white p-8 transition hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-50"
               >
                 <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
                   <span>{post.date}</span>
@@ -238,7 +183,7 @@ export function EditorialHome() {
                     </span>
                   ))}
                 </div>
-              </article>
+              </Link>
             ))
           )}
         </div>
