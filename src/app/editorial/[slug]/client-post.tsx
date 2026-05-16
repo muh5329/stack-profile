@@ -5,14 +5,11 @@ import Link from "next/link";
 import { Card } from "~/components/ui/card";
 import { getPostBySlug, useEditorialPosts } from "~/lib/editorial-posts";
 
-interface PostPageProps {
-  params: {
-    slug: string;
-  };
+interface EditorialPostClientProps {
+  slug: string;
 }
 
-export default function PostPage({ params }: PostPageProps) {
-  const { slug } = params;
+export default function EditorialPostClient({ slug }: EditorialPostClientProps) {
   const { posts, loading, error } = useEditorialPosts();
   const post = useMemo(() => getPostBySlug(slug), [slug, posts]);
 

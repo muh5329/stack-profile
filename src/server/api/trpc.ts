@@ -131,3 +131,10 @@ export const protectedProcedure = t.procedure
       },
     });
   });
+
+export const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
+  if (!ctx.session.user.isAdmin) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "Admin privileges are required to submit posts." });
+  }
+  return next();
+});

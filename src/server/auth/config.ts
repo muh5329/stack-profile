@@ -1,6 +1,6 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
+import Google from "next-auth/providers/google";
 
 import { db } from "~/server/db";
 
@@ -14,6 +14,7 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
+      isAdmin?: boolean;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
@@ -32,25 +33,33 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    DiscordProvider,
+    Google,
     /**
      * ...add more providers here.
      *
-     * Most other providers require a bit more work than the Discord provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
+     * Most other providers require a bit more work than the Google provider.
+     * Refer to the NextAuth.js docs for the provider you want to use.
      *
-     * @see https://next-auth.js.org/providers/github
+     * @see https://next-auth.js.org/providers
      */
   ],
   adapter: PrismaAdapter(db),
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session: ({ session, user }) => {
+      const adminEmails = (process.env.ADMIN_EMAILS || "")
+        .split(",")
+        .map((email) => email.trim().toLowerCase())
+        .filter(Boolean);
+      const email = session.user?.email?.toLowerCase();
+
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+          isAdmin: email ? adminEmails.includes(email) : false,
+        },
+      };
+    },
   },
 } satisfies NextAuthConfig;

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Moon, Search } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
-import { posts, type Post } from "~/lib/editorial-posts";
+import { type Post, useEditorialPosts } from "~/lib/editorial-posts";
 
 const categories = [
   "All",
@@ -58,6 +58,7 @@ function matches(post: Post, query: string) {
 export function EditorialHome() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const { posts, loading, error } = useEditorialPosts();
 
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
@@ -65,10 +66,10 @@ export function EditorialHome() {
       const searchMatch = !search || matches(post, search);
       return categoryMatch && searchMatch;
     });
-  }, [activeCategory, search]);
+  }, [activeCategory, search, posts]);
 
   return (
-    <main className="h-screen overflow-hidden bg-slate-50 text-slate-950">
+    <main className="h-screen overflow-y-auto bg-slate-50 text-slate-950">
       <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="/" className="text-lg font-semibold tracking-tight text-slate-950">
@@ -85,6 +86,9 @@ export function EditorialHome() {
             <Button variant="ghost" size="icon" className="rounded-full border border-slate-200 text-slate-700 hover:bg-slate-100">
               <Moon className="h-4 w-4" />
             </Button>
+            {/* <Button variant="outline" size="sm" asChild>
+              <Link href="/submit-post">Submit post</Link>
+            </Button> */}
             <Button variant="outline" size="sm" asChild>
               <Link href="/profile">Profile</Link>
             </Button>
@@ -153,9 +157,19 @@ export function EditorialHome() {
         </div>
       </section>
 
+      {/* # Cards */}
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <div className="space-y-6 overflow-y-auto pr-2 max-h-[65vh]">
-          {filteredPosts.length === 0 ? (
+        <div className="space-y-6  pr-2 max-h-[70vh]"> 
+          
+          {loading ? (
+            <Card className="rounded-3xl border border-slate-200 bg-white p-8">
+              <p className="text-slate-700">Loading posts...</p>
+            </Card>
+          ) : error ? (
+            <Card className="rounded-3xl border border-slate-200 bg-white p-8">
+              <p className="text-red-600">{error}</p>
+            </Card>
+          ) : filteredPosts.length === 0 ? (
             <Card className="rounded-3xl border border-slate-200 bg-white p-8">
               <p className="text-slate-700">No posts match that search. Try another term or category.</p>
             </Card>

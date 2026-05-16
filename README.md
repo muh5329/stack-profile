@@ -1,7 +1,7 @@
 # Stack Profile
 
 A vertical-profile redesign inspired by Substack and modern editorial portfolios.
-This T3 Stack project is built with Next.js, Tailwind CSS, Prisma, tRPC, NextAuth, and shadcn/ui.
+This T3 Stack project is built with Next.js, Tailwind CSS, Drizzle, tRPC, NextAuth, and shadcn/ui.
 
 ## Project Direction
 
@@ -31,7 +31,6 @@ It is designed to feel editorial, intellectual, minimal, and warm — with a foc
 
 ## TODO
 
-- Add SQLite database support
 - Continue implementing editorial feed search and filtering
 - Refine right sidebar modules (Pinned in Culture, Reading Now, Current Experiments)
 
@@ -39,11 +38,28 @@ It is designed to feel editorial, intellectual, minimal, and warm — with a foc
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
 - [Drizzle](https://orm.drizzle.team)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 - [shadcn/ui](https://ui.shadcn.com)
+
+## Development
+
+### Running the Application
+
+To start the development server:
+
+```bash
+npm run dev
+```
+
+### Database Commands
+
+This project uses Drizzle ORM with SQLite.
+
+- Generate migrations: `npm run db:generate`
+- Run migrations: `npm run db:migrate`
+- Open Drizzle Studio (database viewer): `npx drizzle-kit studio`
 
 ## Deployment
 

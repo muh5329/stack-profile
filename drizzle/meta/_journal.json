@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1778472888812,
+      "tag": "0000_broken_miek",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1778473108857,
+      "tag": "0001_flawless_quasar",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1778473694230,
+      "tag": "0002_broken_patch",
+      "breakpoints": true
+    }
+  ]
+}
