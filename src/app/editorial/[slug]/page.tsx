@@ -1,20 +1,27 @@
 "use client";
 
-import { useMemo } from "react";
+import { use, useMemo } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { Card } from "~/components/ui/card";
 import { getPostBySlug, useEditorialPosts } from "~/lib/editorial-posts";
 
-interface PostPageProps {
-  params: {
+type PostPageProps = {
+  params: Promise<{
     slug: string;
-  };
-}
+  }>;
+};
 
 export default function PostPage({ params }: PostPageProps) {
-  const { slug } = params;
+  const { slug } = use(params);
   const { posts, loading, error } = useEditorialPosts();
   const post = useMemo(() => getPostBySlug(slug), [slug, posts]);
+  const relatedPosts = useMemo(() => {
+  if (!post) return [];
+
+  return posts.filter((item) => item.slug !== post.slug).slice(0, 3);
+}, [posts, post]);
 
   if (loading) {
     return (
@@ -58,10 +65,7 @@ export default function PostPage({ params }: PostPageProps) {
     );
   }
 
-  const relatedPosts = useMemo(
-    () => posts.filter((item) => item.slug !== post.slug).slice(0, 3),
-    [posts, post.slug],
-  );
+
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-950">
@@ -101,9 +105,7 @@ export default function PostPage({ params }: PostPageProps) {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
           <article className="space-y-8 text-base leading-8 text-slate-700">
-            {post.content.map((paragraph, index) => (
-              <p key={`${slug}-paragraph-${index}`}>{paragraph}</p>
-            ))}
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
             <Card className="rounded-3xl border border-slate-200 bg-white p-6">
               <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Related posts</p>
               <div className="mt-5 space-y-3 text-sm text-slate-700">
@@ -122,8 +124,8 @@ export default function PostPage({ params }: PostPageProps) {
 
           <aside className="space-y-6">
             <Card className="rounded-3xl border border-slate-200 bg-white p-6">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Excerpt</p>
-              <p className="mt-4 text-sm leading-7 text-slate-700">{post.excerpt}</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Snippet</p>
+              <p className="mt-4 text-sm leading-7 text-slate-700">{post.snippet}</p>
             </Card>
           </aside>
         </div>

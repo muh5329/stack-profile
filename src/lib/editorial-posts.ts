@@ -3,46 +3,71 @@
 import { useEffect, useState } from "react";
 
 export type Post = {
-  slug: string;
+  slug: number;
   title: string;
-  excerpt: string;
+  snippet: string;
   date: string;
   readingTime: string;
   tags: string[];
   category: string;
-  content: string[];
+  content: string;
 };
 
 export let posts: Post[] = [];
+export let pinnedPosts: PinnedPost[] = [];
 
 function normalizePost(item: any): Post {
   const slug =
-    item.slug ||
-    item.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") ||
-    "";
+    item.id ||
+    0;
 
   return {
     slug,
     title: item.title || "",
-    excerpt: item.excerpt || item.snippet || "",
+    snippet: item.snippet || "",
     date: item.date || item.createdAt || "",
     readingTime: item.readingTime || "",
     tags: Array.isArray(item.tags) ? item.tags : [],
     category: item.category || "",
-    content: Array.isArray(item.content) ? item.content : [],
+    content: item.content || "",
   };
 }
 
+export type PinnedPost = {
+  id: number;
+  postId: number;
+  title: string;
+};
+
+function normalizePinnedPost(item: any): PinnedPost {
+  return {
+    id: item.id || 0,
+    postId: item.postId || 0,
+    title: item.title || "",
+  };
+}
 function mapPosts(rawData: any): Post[] {
   return Array.isArray(rawData) ? rawData.map(normalizePost) : [];
 }
 
+function mapPinnedPosts(rawData: any): PinnedPost[] {
+  return Array.isArray(rawData) ? rawData.map(normalizePinnedPost) : [];
+}
+
+
 export function getPostBySlug(slug: string): Post | null {
-  return posts.find((item) => item.slug === slug) ?? null;
+  const numericSlug = Number(slug);
+  return posts.find((item) => item.slug === numericSlug) ?? null;
 }
 
 type UseEditorialPostsResult = {
   posts: Post[];
+  loading: boolean;
+  error: string | null;
+};
+
+type UsePinnedPostsResult = {
+  pinnedPosts: PinnedPost[];
   loading: boolean;
   error: string | null;
 };
@@ -94,4 +119,54 @@ export function useEditorialPosts(): UseEditorialPostsResult {
   }, []);
 
   return { posts: postsData, loading, error };
+}
+
+
+export function usePinnedPosts(): UsePinnedPostsResult {
+  const [postsData, setPostsData] = useState<PinnedPost[]>(pinnedPosts);
+  const [loading, setLoading] = useState(pinnedPosts.length === 0);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (pinnedPosts.length > 0) {
+      setPostsData(pinnedPosts);
+      setLoading(false);
+      return;
+    }
+
+    async function loadPosts() {
+      try {
+        const res = await fetch("/api/get-pinned-posts", { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error(`Failed to load posts: ${res.status}`);
+        }
+
+        const rawData = await res.json();
+        const mapped = mapPinnedPosts(rawData);
+
+        if (!cancelled) {
+          pinnedPosts = mapped;
+          setPostsData(mapped);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Unknown error");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadPosts();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return { pinnedPosts: pinnedPosts, loading, error };
 }

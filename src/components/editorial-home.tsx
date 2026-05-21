@@ -5,7 +5,10 @@ import Link from "next/link";
 import { Moon, Search } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
-import { type Post, useEditorialPosts } from "~/lib/editorial-posts";
+import { type Post, useEditorialPosts , usePinnedPosts } from "~/lib/editorial-posts";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { formatDistanceToNow } from "date-fns";
 
 const categories = [
   "All",
@@ -19,18 +22,6 @@ const categories = [
   "Experiments",
 ];
 
-const pinnedCulture = [
-  "Signal Sculptures: Making Systems Speak",
-  "Architecture of a Quiet Interface",
-  "The Legend of Slow Software",
-  "Personal Notes on Platform Mythology",
-];
-
-const readingNow = [
-  "Aesthetic Algorithms",
-  "On Playful Infrastructure",
-  "Rituals of Code Review",
-];
 
 const experiments = [
   "RTS pathfinding mesh",
@@ -50,7 +41,7 @@ function matches(post: Post, query: string) {
   const normalized = query.toLowerCase();
   return (
     post.title.toLowerCase().includes(normalized) ||
-    post.excerpt.toLowerCase().includes(normalized) ||
+    post.snippet.toLowerCase().includes(normalized) ||
     post.tags.some((tag) => tag.toLowerCase().includes(normalized))
   );
 }
@@ -59,14 +50,22 @@ export function EditorialHome() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const { posts, loading, error } = useEditorialPosts();
+  const {pinnedPosts} = usePinnedPosts();
 
   const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      const categoryMatch = activeCategory === "All" || post.category === activeCategory || post.tags.includes(activeCategory);
+  return posts
+    .filter((post) => {
+      const categoryMatch =
+        activeCategory === "All" ||
+        post.category === activeCategory ||
+        post.tags.includes(activeCategory);
+
       const searchMatch = !search || matches(post, search);
+
       return categoryMatch && searchMatch;
-    });
-  }, [activeCategory, search, posts]);
+    })
+    .slice(0, 3);
+}, [activeCategory, search, posts]);
 
   return (
     <main className="h-screen overflow-y-auto bg-slate-50 text-slate-950">
@@ -97,7 +96,7 @@ export function EditorialHome() {
       </div>
 
       <section className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="space-y-5">
             <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Personal musings</p>
             <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl">
@@ -111,13 +110,19 @@ export function EditorialHome() {
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Pinned</p>
             <div className="mt-5 space-y-3 text-sm text-slate-700">
-              {pinnedCulture.map((item) => (
-                <div key={item} className="border-b border-slate-100 pb-3 last:border-0 last:pb-0">
-                  <p className="font-medium text-slate-950">{item}</p>
-                </div>
+              {pinnedPosts.map((item) => (
+                  <Link
+                  key={item.postId}
+                  href={`/editorial/${item.postId}`}
+                  className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-slate-950 transition hover:border-slate-300"
+                > 
+                  <p className="font-medium text-slate-950">{item.title}</p>
+                </Link>
+                
               ))}
             </div>
           </div>
+          
         </div>
       </section>
 
@@ -181,12 +186,14 @@ export function EditorialHome() {
                 className="group block rounded-3xl border border-slate-200 bg-white p-8 transition hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-50"
               >
                 <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-                  <span>{post.date}</span>
+                  <span>
+                    {formatDistanceToNow(post.date, { addSuffix: true })}
+                  </span>
                   <span>·</span>
                   <span>{post.readingTime}</span>
                 </div>
                 <h2 className="mt-4 text-3xl font-semibold text-slate-950">{post.title}</h2>
-                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">{post.excerpt}</p>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.snippet}</ReactMarkdown>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span
@@ -200,20 +207,24 @@ export function EditorialHome() {
               </Link>
             ))
           )}
+
+          <div className="mt-6 flex justify-center">
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+            className="rounded-full px-8"
+          >
+            <Link href="/archive">More</Link>
+          </Button>
         </div>
 
-        <aside className="space-y-6">
-          <Card className="rounded-3xl border border-slate-200 bg-white p-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Reading now</p>
-            <div className="mt-5 space-y-3 text-sm text-slate-700">
-              {readingNow.map((item) => (
-                <div key={item} className="rounded-2xl border border-slate-100 bg-slate-50 p-3">
-                  <p className="font-medium text-slate-950">{item}</p>
-                </div>
-              ))}
-            </div>
-          </Card>
 
+        </div>
+             
+
+        <aside className="space-y-6">
+        
           <Card className="rounded-3xl border border-slate-200 bg-white p-6">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Currently exploring</p>
             <div className="mt-5 space-y-3 text-sm text-slate-700">

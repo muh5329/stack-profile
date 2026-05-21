@@ -17,8 +17,10 @@ export async function GET(req: Request) {
     title: posts.title,
     snippet: posts.snippet,
     tags: posts.tags,
+    content: posts.content,
     createdAt: posts.createdAt,
     username: profiles.username,
+    likes : posts.likes,
     bio: profiles.bio,
   }));
 

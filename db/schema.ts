@@ -29,3 +29,9 @@ export const postTags = sqliteTable("post_tags", {
   postId: integer("post_id").references(() => posts.id).notNull(),
   tagId: integer("tag_id").references(() => tags.id).notNull(),
 });
+
+export const pinnedPosts = sqliteTable("pinned_posts", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  postId: integer("post_id").references(() => posts.id).notNull(),
+    title: text("title").notNull(),
+});
