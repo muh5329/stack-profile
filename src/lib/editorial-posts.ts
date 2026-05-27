@@ -16,10 +16,28 @@ export type Post = {
 export let posts: Post[] = [];
 export let pinnedPosts: PinnedPost[] = [];
 
+function normalizeTags(rawTags: any): string[] {
+  if (Array.isArray(rawTags)) {
+    return rawTags.map(String).map((tag) => tag.trim()).filter(Boolean);
+  }
+
+  if (typeof rawTags === "string") {
+    return rawTags
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
+function normalizeContent(rawContent: any): string {
+  if (typeof rawContent !== "string") return "";
+  return rawContent.replace(/\\r?\\n/g, "\n");
+}
+
 function normalizePost(item: any): Post {
-  const slug =
-    item.id ||
-    0;
+  const slug = item.id ?? 0;
 
   return {
     slug,
@@ -27,9 +45,9 @@ function normalizePost(item: any): Post {
     snippet: item.snippet || "",
     date: item.date || item.createdAt || "",
     readingTime: item.readingTime || "",
-    tags: Array.isArray(item.tags) ? item.tags : [],
+    tags: normalizeTags(item.tags),
     category: item.category || "",
-    content: item.content || "",
+    content: normalizeContent(item.content),
   };
 }
 
@@ -111,7 +129,7 @@ export function useEditorialPosts(): UseEditorialPostsResult {
       }
     }
 
-    loadPosts();
+    void loadPosts();
 
     return () => {
       cancelled = true;
@@ -161,7 +179,7 @@ export function usePinnedPosts(): UsePinnedPostsResult {
       }
     }
 
-    loadPosts();
+    void loadPosts();
 
     return () => {
       cancelled = true;

@@ -78,7 +78,7 @@ export function EditorialHome() {
           <div className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
             <Link href="/" className="hover:text-slate-950">Home</Link>
             <Link href="/profile" className="hover:text-slate-950">Profile</Link>
-            <Link href="/" className="hover:text-slate-950">Archive</Link>
+            <Link href="/archive" className="hover:text-slate-950">Archive</Link>
           </div>
 
           <div className="flex items-center gap-2">
@@ -107,21 +107,6 @@ export function EditorialHome() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Pinned</p>
-            <div className="mt-5 space-y-3 text-sm text-slate-700">
-              {pinnedPosts.map((item) => (
-                  <Link
-                  key={item.postId}
-                  href={`/editorial/${item.postId}`}
-                  className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-slate-950 transition hover:border-slate-300"
-                > 
-                  <p className="font-medium text-slate-950">{item.title}</p>
-                </Link>
-                
-              ))}
-            </div>
-          </div>
           
         </div>
       </section>
@@ -225,16 +210,21 @@ export function EditorialHome() {
 
         <aside className="space-y-6">
         
-          <Card className="rounded-3xl border border-slate-200 bg-white p-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Currently exploring</p>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Pinned</p>
             <div className="mt-5 space-y-3 text-sm text-slate-700">
-              {experiments.map((item) => (
-                <div key={item} className="rounded-2xl border border-slate-100 bg-slate-50 p-3">
-                  <p className="font-medium text-slate-950">{item}</p>
-                </div>
+              {pinnedPosts.map((item) => (
+                  <Link
+                  key={item.postId}
+                  href={`/editorial/${item.postId}`}
+                  className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-slate-950 transition hover:border-slate-300"
+                > 
+                  <p className="font-medium text-slate-950">{item.title}</p>
+                </Link>
+                
               ))}
             </div>
-          </Card>
+          </div>
 
           <Card className="rounded-3xl border border-slate-200 bg-white p-6">
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Links</p>

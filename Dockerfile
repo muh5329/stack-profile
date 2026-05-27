@@ -1,9 +1,8 @@
-FROM node:21-alpine AS base
+FROM node:22-bullseye-slim AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+RUN apt-get update && apt-get install -y python3 build-essential libsqlite3-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
@@ -15,21 +14,24 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
+RUN npm rebuild better-sqlite3 --build-from-source || true
+
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
+
+# Copy source files and environment config for build-time DB/schema resolution
 COPY . .
+COPY .env .env
 
-# Ensure the prisma folder is copied
-COPY prisma ./prisma
-
-# Run Prisma generate to generate the Prisma client
+# Ensure Prisma client generation happens before the Next build
 RUN npx prisma generate
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
+# Apply Drizzle migrations to populate/update the SQLite DB before build
+RUN npx drizzle-kit migrate
+
+# Next.js collects anonymous telemetry data about general usage.
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
@@ -39,34 +41,31 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-# Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
+RUN apt-get update && apt-get install -y openssl libssl1.1 ca-certificates || true && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV production
-# Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV PORT 3000
+ENV DATABASE_URL="file:./db.sqlite"
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Copy runtime assets from the build stage
 COPY --from=builder /app/public ./public
-
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Copy SQLite database files and local env file for runtime
+COPY --from=builder /app/db ./db
+COPY --from=builder /app/db.sqlite ./db.sqlite
+COPY --from=builder /app/.env ./.env
 
 USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-
 # server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
 CMD HOSTNAME="0.0.0.0" node server.js

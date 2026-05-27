@@ -1,55 +1,93 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GithubIcon, LinkedinIcon, Mail, Twitter } from "lucide-react";
+import { ArrowUpRight, GithubIcon, LinkedinIcon, Mail, Twitter } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
 
 const technologies = [
-  "Raylib",
-  "Godot",
-  "C",
-  "Rendering",
-  "ECS",
-  "Physics",
-  "AI",
-  "Simulation",
-  "Systems",
-  "Procedural",
+  "Java",
+  "Go",
+  "Python",
+  "TypeScript",
+  "Apache Flink",
+  "EMR",
+  "gRPC",
+  "Docker",
+  "AWS",
+  "Terraform",
+  "Concourse",
+  "Spring Boot",
+  "React",
+  "Next.js",
+  "IntelliJ",
+  "VSCode",
+  "Databricks",
+  "Neovim",
+  "tmux",
 ];
 
 const currentWork = [
   {
-    title: "Data integration and stream systems",
+    title: "JPMC - Senior Software Engineer ",
     description:
-      "Modern engineering for real-time analytics, observability, and resilient pipeline design.",
+      "Analyzed large-scale credit and transaction datasets to build fraud and abuse detection models, pipelines, and analytics. I leveraged EMR, Airflow DAGs, Java APIs, XGBoost, and group-shap explainability techniques to surface high-risk patterns and improve model precision.",
   },
   {
-    title: "Experimental game interfaces",
+    title: "Comcast — Backend Engineer III",
     description:
-      "Small structural experiments in RTS, procedural worlds, and play systems that feel personal.",
+      "Building real-time data integration and outage detection systems using Apache Flink, Spring Boot, Redis, and AWS for proactive customer experience and operational analytics.",
+  },
+  {
+    title: "Comcast — Engineer II",
+    description:
+      "Delivered Angular and React applications for customer lifecycle diagnostics, data pipeline ingestion, and ML-driven recommendations powered by Databricks and Python.",
+  },
+  {
+    title: "Independence Blue Cross — Software Developer",
+    description:
+      "Built single-page apps for member onboarding and support workflows, including primary care physician selection and agent-facing support tools.",
   },
 ];
 
 const projects = [
-  "Goblin Research Engine",
-  "Procedural Heraldry Toolkit",
-  "RTS Mesh Pathfinding",
-  "Signal Systems Notebook",
+  {
+    title: "WaveCollapseEditor",
+    description: "Wave Transform Collapse Algorithm Editor to build connections and rules.",
+    link: "https://github.com/muh5329/WaveCollapseEditor",
+    language: "JavaScript",
+  },
+  {
+    title: "SpacePortfolio",
+    description: "A fun Space themed Portfolio site.",
+    link: "https://github.com/muh5329/SpacePortfolio",
+    language: "JavaScript",
+  },
+  {
+    title: "DigitalPaperControlPlane",
+    description: "Sony Digital Paper control plane to show random stuff on a set interval.",
+    link: "https://github.com/muh5329/DigitalPaperControlPlane",
+    language: "Python",
+  },
+  {
+    title: "FuzzyPlanets",
+    description: "Planet Makers.",
+    link: "https://github.com/muh5329/FuzzyPlanets",
+    language: "JavaScript",
+  },
+  {
+    title: "vertical_profile",
+    description: "A vertical profile redesign inspired by modern editorial portfolios.",
+    link: "https://github.com/muh5329/vertical_profile",
+    language: "TypeScript",
+  },
+  {
+    title: "LegionCommander",
+    description: "Godot isometric game.",
+    link: "https://github.com/muh5329/LegionCommander",
+    language: "GDScript",
+  },
 ];
 
-const writing = [
-  "The Cathedral and the Bazaar",
-  "On Simulation and Ritual",
-  "Building Tiny Worlds",
-];
-
-const interests = [
-  "Systems thinking",
-  "Simulation practice",
-  "Urbanism and ritual",
-  "Cultural interfaces",
-  "Experimental publishing",
-];
 
 export default function ProfilePage() {
   return (
@@ -57,7 +95,7 @@ export default function ProfilePage() {
       <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="/" className="text-lg font-semibold tracking-tight text-slate-950">
-            Vertical
+            Monkey Factory
           </Link>
           <div className="flex items-center gap-4 text-sm text-slate-600">
             <Link href="/" className="hover:text-slate-950">Home</Link>
@@ -83,16 +121,16 @@ export default function ProfilePage() {
                 <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Profile</p>
                 <h1 className="mt-4 text-3xl font-semibold text-slate-950">Muneeb Haq</h1>
                 <p className="mt-3 text-base leading-7 text-slate-700">
-                  Builder of strange systems and experimental software. Currently exploring RTS simulation, procedural worlds, and cultural interfaces.
+                  Muneeb is an engineer with over nine years of professional experience across both backend and frontend systems. He builds real-time data pipelines, customer-facing web apps, and experimental tooling that connects infrastructure and product.
                 </p>
               </div>
 
               <div className="space-y-3 text-sm text-slate-700">
                 <p>
-                  <strong className="text-slate-950">Location:</strong> United States
+                  <strong className="text-slate-950">Location:</strong> Coatesville, PA
                 </p>
                 <p>
-                  <strong className="text-slate-950">Focus:</strong> systems, simulation, and cultural notes.
+                  <strong className="text-slate-950">Focus:</strong> backend systems, frontend experiences, and data-driven tooling.
                 </p>
               </div>
 
@@ -113,7 +151,7 @@ export default function ProfilePage() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <Link href="https://monkeyfactory.org/" target="_blank" rel="noreferrer">
+                  <Link href="https://www.linkedin.com/in/muneeb-haq-87b96098/" target="_blank" rel="noreferrer">
                     <LinkedinIcon className="h-4 w-4" />
                   </Link>
                 </Button>
@@ -135,7 +173,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Current work</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Experience</p>
               <div className="mt-6 space-y-4">
                 {currentWork.map((item) => (
                   <div key={item.title} className="rounded-3xl border border-slate-100 bg-slate-50 p-5">
@@ -161,40 +199,30 @@ export default function ProfilePage() {
 
         <div className="mt-16 space-y-12">
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Project archive</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Project Highlights</p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {projects.map((project) => (
-                <div key={project} className="rounded-3xl border border-slate-100 bg-slate-50 p-5">
-                  <p className="font-semibold text-slate-950">{project}</p>
-                </div>
+                <Link
+                  key={project.title}
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-3xl border border-slate-100 bg-slate-50 p-5 no-underline transition hover:border-slate-300 hover:bg-slate-100"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-semibold text-slate-950">{project.title}</p>
+                      <p className="mt-2 text-sm text-slate-700">{project.description}</p>
+                    </div>
+                    <ArrowUpRight className="h-4 w-4 text-slate-500" />
+                  </div>
+                  <p className="mt-3 text-xs uppercase tracking-[0.2em] text-slate-500">{project.language}</p>
+                </Link>
               ))}
             </div>
           </div>
 
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Writing / notes</p>
-              <div className="mt-6 space-y-4 text-slate-700">
-                {writing.map((item) => (
-                  <div key={item} className="rounded-3xl border border-slate-100 bg-slate-50 p-5">
-                    <p className="font-medium text-slate-950">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Philosophy / interests</p>
-              <ul className="mt-6 space-y-3 text-slate-700">
-                {interests.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-slate-900" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          
         </div>
       </section>
     </main>

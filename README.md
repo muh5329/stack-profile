@@ -64,3 +64,8 @@ This project uses Drizzle ORM with SQLite.
 ## Deployment
 
 Follow the deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify), and [Docker](https://create.t3.gg/en/deployment/docker).
+
+
+# Docker cmds:
+docker build -t my-app .
+docker run -p 3000:3000 my-app

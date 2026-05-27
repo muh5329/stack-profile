@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useMemo } from "react";
+import { useMemo, use } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
@@ -8,9 +8,7 @@ import { Card } from "~/components/ui/card";
 import { getPostBySlug, useEditorialPosts } from "~/lib/editorial-posts";
 
 type PostPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 };
 
 export default function PostPage({ params }: PostPageProps) {
