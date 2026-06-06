@@ -23,13 +23,20 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Copy source files and environment config for build-time DB/schema resolution
 COPY . .
-COPY .env .env
+COPY .env* ./
+RUN if [ ! -f .env ] && [ -f .env.example ]; then cp .env.example .env; fi
 
 # Ensure Prisma client generation happens before the Next build
 RUN npx prisma generate
 
 # Apply Drizzle migrations to populate/update the SQLite DB before build
 RUN npx drizzle-kit migrate
+
+# Ensure runtime DB and env files exist so the runner stage can copy them safely
+RUN mkdir -p /app/runtime \
+  && if [ -d /app/db ]; then cp -a /app/db /app/runtime/db; fi \
+  && if [ -f /app/db.sqlite ]; then cp /app/db.sqlite /app/runtime/db.sqlite; else node -e "require('fs').closeSync(require('fs').openSync('db.sqlite','w'))" && cp db.sqlite /app/runtime/db.sqlite; fi \
+  && if [ -f /app/.env ]; then cp /app/.env /app/runtime/.env; elif [ -f /app/.env.example ]; then cp /app/.env.example /app/runtime/.env; else touch /app/runtime/.env; fi
 
 # Next.js collects anonymous telemetry data about general usage.
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -58,10 +65,10 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Copy SQLite database files and local env file for runtime
-COPY --from=builder /app/db ./db
-COPY --from=builder /app/db.sqlite ./db.sqlite
-COPY --from=builder /app/.env ./.env
+# Copy SQLite database files and local env file for runtime from the prepared runtime bundle
+COPY --from=builder /app/runtime/db ./db
+COPY --from=builder /app/runtime/db.sqlite ./db.sqlite
+COPY --from=builder /app/runtime/.env ./.env
 
 USER nextjs
 
